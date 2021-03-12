@@ -25,8 +25,8 @@ namespace PcHut.Controllers
             CategoryRepository categoryList = new CategoryRepository();
             ViewData["categories"] = categoryList.GetAll();
 
-            /*BrandRepository brandList = new BrandRepository();
-            ViewData["brands"] = brandList.GetAll();*/
+            BrandRepository brandList = new BrandRepository();
+            ViewData["brands"] = brandList.GetAll();
             return View();
         }
 

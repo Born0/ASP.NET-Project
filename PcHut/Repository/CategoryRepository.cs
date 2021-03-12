@@ -8,6 +8,9 @@ namespace PcHut.Repository
 {
     public class CategoryRepository : Repository<category>
     {
-       
+        public List<product> GetProducts(int id)
+        {
+            return null;
+        }
     }
 }
