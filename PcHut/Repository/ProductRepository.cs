@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
-
+using System.Data.SqlClient;
 namespace PcHut.Repository
 {
     public class ProductRepository : Repository<product>
@@ -29,6 +29,11 @@ namespace PcHut.Repository
                     )");
 
             return list1;
+        }
+        public List<product> Search(string name)
+        {
+            // return this.context.products.Where(x => x.product_name == name).ToList();
+            return this.context.products.Where(x => x.product_name.Contains(name)).ToList();
         }
     }
 }

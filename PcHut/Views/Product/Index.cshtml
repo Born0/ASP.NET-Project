@@ -12,6 +12,12 @@
     <title>Index</title>
 </head>
 <body>
+    
+    <form method="post" action="/Product/SearchProduct">
+        <input type="text" name="search" />
+        <input type="submit" value="Search" />
+    </form>
+
     <a href="/product/create">Create Product</a>
     @*<p>
             @Html.ActionLink("Create New", "Create")

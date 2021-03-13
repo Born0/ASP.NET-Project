@@ -62,5 +62,13 @@ namespace PcHut.Controllers
             var allBuyers = buyers.BoughtByBuyers();
             return View(allBuyers);
         }*/
+        [HttpPost]
+        public ActionResult SearchProduct(FormCollection collection )
+        {
+            string name = collection["search"];
+            ProductRepository productRepository = new ProductRepository();
+           List<product> products= productRepository.Search(name);
+            return View(products);
+        }
     }
 }

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<PcHut.Models.product>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search</h2>
+@foreach (var item in Model)
+{
+    @item.product_name
+    @item.product_id 
+    <br />
+
+
+}
+
