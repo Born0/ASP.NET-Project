@@ -46,5 +46,21 @@ namespace PcHut.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult GetTopSold()
+        {
+            ProductRepository products = new ProductRepository();
+            var allUsers = products.TopProductSold();
+            return View(allUsers);
+        }
+
+        /*[HttpGet]
+        public ActionResult ProductBoughtByBuyers()
+        {
+            ProductRepository buyers = new ProductRepository();
+            var allBuyers = buyers.BoughtByBuyers();
+            return View(allBuyers);
+        }*/
     }
 }

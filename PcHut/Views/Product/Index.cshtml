@@ -14,8 +14,11 @@
 <body>
     <a href="/product/create">Create Product</a>
     @*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
+    <a href="/user/index">All users</a> <br />
+    @*<a href="/product/GetTopSold">Highest Number of Product Sold</a>*@
+    <a href="/user/ProductBoughtByBuyers">Product Bought By Buyers</a>
     <table class="table">
         <tr>
             <th>
@@ -31,8 +34,8 @@
                 @Html.DisplayNameFor(model => model.price)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.image)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.image)
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.brand.brand_name)
             </th>

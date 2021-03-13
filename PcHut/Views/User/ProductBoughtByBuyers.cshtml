@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ProductBoughtByBuyers</title>
+</head>
+<body>
+    <table align="center">
+        <tr>
+            <td>User Name</td>
+            <td>User Email</td>
+            <td>Phone</td>
+        </tr>
+
+        @foreach(var data in Model)
+        {
+            <tr>
+                <td>@data.user_name</td>
+                <td>@data.email</td>
+                <td>@data.phone</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
