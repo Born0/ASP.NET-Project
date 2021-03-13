@@ -238,6 +238,7 @@ D:\ASP Dot Net Projects\Project 2\ASP.NET-Project\PcHut\obj\Debug\PcHut.csproj.C
 D:\ASP Dot Net Projects\Project 2\ASP.NET-Project\PcHut\obj\Debug\PcHut.csproj.CopyComplete
 D:\ASP Dot Net Projects\Project 2\ASP.NET-Project\PcHut\obj\Debug\PcHut.dll
 D:\ASP Dot Net Projects\Project 2\ASP.NET-Project\PcHut\obj\Debug\PcHut.pdb
+D:\Class\ASP .net\ASP.NET Project\PcHut\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\PcHut.dll.config
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\PcHut.dll
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\PcHut.pdb
@@ -247,7 +248,6 @@ D:\Class\ASP .net\ASP.NET Project\PcHut\bin\roslyn\csc.rsp
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\roslyn\csi.exe
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\roslyn\csi.rsp
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\Class\ASP .net\ASP.NET Project\PcHut\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\roslyn\Microsoft.CodeAnalysis.dll
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
@@ -297,4 +297,3 @@ D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.csproj.CoreCompileInputs
 D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.csproj.CopyComplete
 D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.dll
 D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.pdb
-D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.csprojAssemblyReference.cache

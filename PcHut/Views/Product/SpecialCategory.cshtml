@@ -1,28 +1,14 @@
 ﻿@model IEnumerable<PcHut.Models.product>
 
 @{
+    ViewBag.Title = "SpecialCategory";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<h2>SpecialCategory</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-   
-   
 
-    <a href="/product/create">Create Product</a>
-    @*<p>
-            @Html.ActionLink("Create New", "Create")
-        </p>*@
-    <a href="/user/index">All users</a> <br />
-    @*<a href="/product/GetTopSold">Highest Number of Product Sold</a>*@
-    <a href="/user/ProductBoughtByBuyers">Product Bought By Buyers</a>
-    <table class="table">
+<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.product_name)
@@ -71,14 +57,8 @@
         <td>
             @Html.DisplayFor(modelItem => item.category.category_name)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.product_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.product_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.product_id })
-        </td>
+       
     </tr>
 }
 
 </table>
-</body>
-</html>

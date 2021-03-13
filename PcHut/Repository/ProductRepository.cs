@@ -35,5 +35,16 @@ namespace PcHut.Repository
             // return this.context.products.Where(x => x.product_name == name).ToList();
             return this.context.products.Where(x => x.product_name.Contains(name)).ToList();
         }
+        public List<product> SearchByType(string type)
+        {
+            List<product> products = new List<product>();
+            List<description> descriptions= this.context.descriptions.Where(x => x.extra == type).ToList();
+            foreach(var item in descriptions)
+            {
+                int id = item.product_id;
+                products.Add(this.context.products.Where(x => x.product_id == id).FirstOrDefault());
+            }
+            return products;
+        }
     }
 }

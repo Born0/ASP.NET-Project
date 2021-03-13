@@ -204,6 +204,9 @@
       <DependentUpon>PcHutDbContext.edmx</DependentUpon>
       <LastGenOutput>PcHutDbContext.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\Image\Laptop Logo.png" />
+    <Content Include="Resources\Image\main logo.png" />
+    <Content Include="Resources\Image\NavBarLogo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\PcHutDbContext.edmx">
@@ -244,10 +247,12 @@
     <Content Include="Views\Product\GetTopSold.cshtml" />
     <Content Include="Views\User\ProductBoughtByBuyers.cshtml" />
     <Content Include="Views\Product\SearchProduct.cshtml" />
+    <Content Include="Views\Product\SpecialCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
+    <Folder Include="Resources\Icon\" />
     <Folder Include="Views\Brand\" />
   </ItemGroup>
   <ItemGroup>

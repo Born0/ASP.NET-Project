@@ -2,30 +2,34 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div style=" padding-top:50px; padding-left:20px;">
+    <form method="post" action="/Product/SearchProduct">
+        <input type="text" name="search" />
+        <input type="submit" value="Search" />
+    </form>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+<div style="padding-top:15px; padding-left:20px">
+    <form method="post" action="Product/SpecialCategory">
+
+        <select for="Special" id="type" name="productType">
+            <option value="Work Station"> Work Station </option>
+            <option value="Gaming"> Gaming World </option>
+            <option value="Apple"> Apple </option>
+        </select>
+        <button type="submit"> Search</button>
+
+        
+    </form>
+    
+</div>
+
+
+
+
+<div style=" padding-top:50px">
+    <img src="~/Resources/Image/main logo.png" width="800" height="500" style="align-content:center" />
+
+
+    <h1>Website loading</h1>
 </div>

@@ -70,5 +70,12 @@ namespace PcHut.Controllers
            List<product> products= productRepository.Search(name);
             return View(products);
         }
+
+        public ActionResult SpecialCategory(FormCollection collection)
+        {
+            string type = collection["productType"];
+            ProductRepository productRepository = new ProductRepository();
+            return View(productRepository.SearchByType(type));
+        }
     }
 }
