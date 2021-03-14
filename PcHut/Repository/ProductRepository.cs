@@ -30,6 +30,14 @@ namespace PcHut.Repository
 
             return list1;
         }
+<<<<<<< HEAD
+
+        public DbSqlQuery<product> TopLaptop()
+        {
+            var product = context.products.SqlQuery(@"select * from product where product_id in (select top 1 product_id from sales_record where product_id in (select product_id from product where category_id = (select category_id from category where category_id = 2)) group by product_id order by sum(quantity) desc)");
+
+            return product;
+=======
         public List<product> Search(string name)
         {
             // return this.context.products.Where(x => x.product_name == name).ToList();
@@ -45,6 +53,7 @@ namespace PcHut.Repository
                 products.Add(this.context.products.Where(x => x.product_id == id).FirstOrDefault());
             }
             return products;
+>>>>>>> 29be6a0f0907bd2ad9d9e101ccb8e8bac18e9f12
         }
     }
 }

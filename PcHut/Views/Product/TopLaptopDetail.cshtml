@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        table, td, tr {
+            border: 1px solid black;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        tr {
+            height: 90px;
+        }
+    </style>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>TopLaptopDetail</title>
+</head>
+<body>
+    <table align="center" border="1">
+        <tr>
+            <td>Product Id</td>
+            <td>Product Name</td>
+            <td>Price</td>
+            <td>Warranty</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>@Model.product_id</td>
+            <td>@Model.product_name</td>
+            <td>@Model.price</td>
+            <td>@Model.warranty</td>
+        </tr>
+    </table>
+</body>
+</html>

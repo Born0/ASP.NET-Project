@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "TopSellerReferenceDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Top Seller Reference Details</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        table, td, tr {
+            border: 1px solid black;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        tr {
+            height: 70px;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width" />
+    <title>Top Seller Reference</title>
+</head>
+<body>
+    <table align="center" border="1">
+        <tr>
+            <td>Seller Id</td>
+            <td>Seller Name</td>
+            <td>Email</td>
+            <td>Total Amount</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>@Model.user_id</td>
+            <td>@Model.user_name</td>
+            <td>@Model.email</td>
+            <td>@ViewData["sumAmount"]</td>
+        </tr>
+    </table>
+</body>
+</html>
