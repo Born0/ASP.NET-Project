@@ -1,0 +1,15 @@
+﻿@model PcHut.Models.credential
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+<h3>@ViewBag.error</h3>
+<form method="post" action="/Login/Index">
+    <input type="text" name="user_id" id="user_id" />
+    <input type="text" name="password" id="password" />
+    <button type="submit" name="loginBtn"> Login</button>
+</form>
+

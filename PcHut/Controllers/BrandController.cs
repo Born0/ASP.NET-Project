@@ -31,6 +31,6 @@ namespace PcHut.Controllers
             brandRepository.Insert(brand);
             return RedirectToAction("Index");
         }
-
+     
     }
 }
