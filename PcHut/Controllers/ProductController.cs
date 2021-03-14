@@ -55,12 +55,22 @@ namespace PcHut.Controllers
             return View(allUsers);
         }
 
-        /*[HttpGet]
-        public ActionResult ProductBoughtByBuyers()
+        [HttpGet]
+        public ActionResult TopLaptopDetail()
         {
-            ProductRepository buyers = new ProductRepository();
-            var allBuyers = buyers.BoughtByBuyers();
-            return View(allBuyers);
-        }*/
+            ProductRepository products = new ProductRepository();
+            var laptop = products.TopLaptop();
+
+            product pr = new product();
+
+            foreach(product p in laptop)
+            {
+                pr.product_id = p.product_id;
+                pr.product_name = p.product_name;
+                pr.price = p.price;
+                pr.warranty = p.warranty;
+            }
+            return View(pr);
+        }
     }
 }
