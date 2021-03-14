@@ -9,7 +9,7 @@ namespace PcHut.Repository
 {
     public class UserRepository : Repository<user>
     {
-        protected pchutEntities1 context = new pchutEntities1();
+        protected pchutEntities2 context = new pchutEntities2();
         public DbSqlQuery<user> GetGreaterThanTwo()
         {
             var list = context.users.SqlQuery(@"Select * from [user]");

@@ -9,7 +9,7 @@ namespace PcHut.Repository
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected pchutEntities1 context = new pchutEntities1();
+        protected pchutEntities2 context = new pchutEntities2();
         public void Delete(int id)
         {
             context.Set<TEntity>().Remove(Get(id));

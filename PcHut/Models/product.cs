@@ -14,12 +14,6 @@ namespace PcHut.Models
     
     public partial class product
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public product()
-        {
-            this.descriptions = new HashSet<description>();
-        }
-    
         public int product_id { get; set; }
         public string product_name { get; set; }
         public int brand_id { get; set; }
@@ -28,10 +22,10 @@ namespace PcHut.Models
         public string warranty { get; set; }
         public double price { get; set; }
         public string image { get; set; }
+        public string specification { get; set; }
+        public string Special { get; set; }
     
         public virtual brand brand { get; set; }
         public virtual category category { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<description> descriptions { get; set; }
     }
 }

@@ -37,13 +37,7 @@ namespace PcHut.Repository
         }
         public List<product> SearchByType(string type)
         {
-            List<product> products = new List<product>();
-            List<description> descriptions= this.context.descriptions.Where(x => x.extra == type).ToList();
-            foreach(var item in descriptions)
-            {
-                int id = item.product_id;
-                products.Add(this.context.products.Where(x => x.product_id == id).FirstOrDefault());
-            }
+            List<product> products= this.context.products.Where(x => x.Special == type).ToList();
             return products;
         }
     }

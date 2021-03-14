@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Class\ASP .net\Advanced-programming-with-ASP.NET\Mid Project\PcHut\Models\PcHutDbContext.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Class\ASP .net\ASP.NET Project\PcHut\Models\PcHutDbContext.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

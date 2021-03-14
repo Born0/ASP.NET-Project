@@ -24,15 +24,6 @@
     <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="user_type" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
-  <EntityType Name="description">
-    <Key>
-      <PropertyRef Name="description_id" />
-    </Key>
-    <Property Name="description_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="product_id" Type="int" Nullable="false" />
-    <Property Name="specification" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="extra" Type="varchar" MaxLength="50" />
-  </EntityType>
   <EntityType Name="invoice">
     <Key>
       <PropertyRef Name="invoice_id" />
@@ -55,6 +46,8 @@
     <Property Name="warranty" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="price" Type="float" Nullable="false" />
     <Property Name="image" Type="varchar" MaxLength="120" />
+    <Property Name="specification" Type="varchar" MaxLength="120" />
+    <Property Name="Special" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="sales_record">
     <Key>
@@ -110,18 +103,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_description_product">
-    <End Role="product" Type="Self.product" Multiplicity="1" />
-    <End Role="description" Type="Self.description" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="product">
-        <PropertyRef Name="product_id" />
-      </Principal>
-      <Dependent Role="description">
-        <PropertyRef Name="product_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_product_brand">
     <End Role="brand" Type="Self.brand" Multiplicity="1" />
     <End Role="product" Type="Self.product" Multiplicity="*" />
@@ -150,7 +131,6 @@
     <EntitySet Name="brand" EntityType="Self.brand" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="credential" EntityType="Self.credential" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="description" EntityType="Self.description" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="invoice" EntityType="Self.invoice" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sales_record" EntityType="Self.sales_record" Schema="dbo" store:Type="Tables" />
@@ -163,10 +143,6 @@
     <AssociationSet Name="FK_credentials_user" Association="Self.FK_credentials_user">
       <End Role="user" EntitySet="user" />
       <End Role="credential" EntitySet="credential" />
-    </AssociationSet>
-    <AssociationSet Name="FK_description_product" Association="Self.FK_description_product">
-      <End Role="product" EntitySet="product" />
-      <End Role="description" EntitySet="description" />
     </AssociationSet>
     <AssociationSet Name="FK_product_brand" Association="Self.FK_product_brand">
       <End Role="brand" EntitySet="brand" />

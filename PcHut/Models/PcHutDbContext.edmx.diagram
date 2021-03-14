@@ -4,21 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0aab34198d9c48fcbddf60be09d2d9e5" Name="Diagram1">
-        <EntityTypeShape EntityType="pchutModel.brand" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="pchutModel.category" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+      <Diagram DiagramId="0994ecbe089e44c3a77d131d7036759e" Name="Diagram1">
+        <EntityTypeShape EntityType="pchutModel.brand" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pchutModel.category" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="pchutModel.credential" Width="1.5" PointX="8" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pchutModel.description" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="pchutModel.invoice" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pchutModel.invoice" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="pchutModel.product" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="pchutModel.sales_record" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pchutModel.sales_record" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="pchutModel.user" Width="1.5" PointX="5.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="pchutModel.vendor" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pchutModel.vendor" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <AssociationConnector Association="pchutModel.FK_brand_vendor" ManuallyRouted="false" />
         <AssociationConnector Association="pchutModel.FK_product_brand" ManuallyRouted="false" />
         <AssociationConnector Association="pchutModel.FK_product_category" ManuallyRouted="false" />
         <AssociationConnector Association="pchutModel.FK_credentials_user" ManuallyRouted="false" />
-        <AssociationConnector Association="pchutModel.FK_description_product" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
