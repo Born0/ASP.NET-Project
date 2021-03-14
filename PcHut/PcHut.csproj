@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -207,6 +207,9 @@
       <DependentUpon>PcHutDbContext.edmx</DependentUpon>
       <LastGenOutput>PcHutDbContext.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\Image\Laptop Logo.png" />
+    <Content Include="Resources\Image\main logo.png" />
+    <Content Include="Resources\Image\NavBarLogo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\PcHutDbContext.edmx">
@@ -246,11 +249,17 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Product\GetTopSold.cshtml" />
     <Content Include="Views\User\ProductBoughtByBuyers.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\User\TopCustomerDetails.cshtml" />
+=======
+    <Content Include="Views\Product\SearchProduct.cshtml" />
+    <Content Include="Views\Product\SpecialCategory.cshtml" />
+>>>>>>> eb9aeab208d2872259718bef966490f81c79917f
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
+    <Folder Include="Resources\Icon\" />
     <Folder Include="Views\Brand\" />
     <Folder Include="Views\Invoice\" />
   </ItemGroup>

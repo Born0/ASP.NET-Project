@@ -54,5 +54,31 @@ namespace PcHut.Controllers
             var allUsers = products.TopProductSold();
             return View(allUsers);
         }
+<<<<<<< HEAD
+=======
+
+        /*[HttpGet]
+        public ActionResult ProductBoughtByBuyers()
+        {
+            ProductRepository buyers = new ProductRepository();
+            var allBuyers = buyers.BoughtByBuyers();
+            return View(allBuyers);
+        }*/
+        [HttpPost]
+        public ActionResult SearchProduct(FormCollection collection )
+        {
+            string name = collection["search"];
+            ProductRepository productRepository = new ProductRepository();
+           List<product> products= productRepository.Search(name);
+            return View(products);
+        }
+
+        public ActionResult SpecialCategory(FormCollection collection)
+        {
+            string type = collection["productType"];
+            ProductRepository productRepository = new ProductRepository();
+            return View(productRepository.SearchByType(type));
+        }
+>>>>>>> eb9aeab208d2872259718bef966490f81c79917f
     }
 }
