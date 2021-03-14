@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; ;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        table, td, tr {
+            border: 1px solid black;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        tr {
+            height: 90px;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width" />
+    <title>ProductBoughtByBuyers</title>
+</head>
+<body>
+    <table align="center">
+        <tr>
+            <td>User Name</td>
+            <td>User Email</td>
+            <td>Phone</td>
+        </tr>
+
+        @foreach(var data in Model)
+        {
+            <tr>
+                <td>@data.user_name</td>
+                <td>@data.email</td>
+                <td>@data.phone</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
