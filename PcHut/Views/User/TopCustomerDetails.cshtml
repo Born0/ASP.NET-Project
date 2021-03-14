@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TopCustomerDetails</title>
+</head>
+<body>
+    <table align="center">
+        <tr>
+            <td>Customer Id</td>
+            <td>Customer Name</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Total Amount</td>
+            <td></td>
+        </tr>
+        @*@foreach (var data in Model)
+        {
+            <tr>
+                <td>@data.user_id</td>
+                <td>@data.user_name</td>
+                <td>@data.phone</td>
+                <td>@data.email</td>
+                <td>@ViewData["totalAmount"]</td>
+            </tr>
+        }*@
+        <tr>
+            <td>@Model.user_id</td>
+            <td>@Model.user_name</td>
+            <td>@Model.phone</td>
+            <td>@Model.email</td>
+            <td>@ViewData["totalAmount"]</td>
+        </tr>
+    </table>
+    
+</body>
+</html>

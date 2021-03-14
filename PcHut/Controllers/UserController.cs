@@ -5,12 +5,16 @@ using System.Web;
 using System.Web.Mvc;
 using PcHut.Repository;
 using PcHut.Models;
+using System.Data.Entity.Infrastructure;
+
 
 
 namespace PcHut.Controllers
 {
     public class UserController : Controller
     {
+        protected pchutEntities1 context1 = new pchutEntities1();
+
         // GET: User
         public ActionResult Index()
         {
@@ -25,6 +29,28 @@ namespace PcHut.Controllers
             UserRepository buyers = new UserRepository();
             var allBuyers = buyers.BoughtByBuyers();
             return View(allBuyers);
+        }
+
+        [HttpGet]
+        public ActionResult TopCustomerDetails()
+        {
+            
+            var list1 = context1.Database.SqlQuery<TopCustomerViewModel>("select top 1 user_id, sum(total_ammount) as Column1 from invoice group by user_id order by sum(total_ammount) desc").ToList();
+
+            int? id = null;
+            string amount = null;
+            foreach(TopCustomerViewModel i in list1)
+            {
+                id = i.User_Id;
+                amount = i.Column1.ToString();
+            }
+            //int id = i
+            ViewData["totalAmount"] = amount;
+
+            UserRepository user = new UserRepository();
+            var userInfo = user.Get((int)id);
+
+            return View(userInfo);
         }
     }
 }

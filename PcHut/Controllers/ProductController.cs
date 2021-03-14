@@ -54,13 +54,5 @@ namespace PcHut.Controllers
             var allUsers = products.TopProductSold();
             return View(allUsers);
         }
-
-        /*[HttpGet]
-        public ActionResult ProductBoughtByBuyers()
-        {
-            ProductRepository buyers = new ProductRepository();
-            var allBuyers = buyers.BoughtByBuyers();
-            return View(allBuyers);
-        }*/
     }
 }

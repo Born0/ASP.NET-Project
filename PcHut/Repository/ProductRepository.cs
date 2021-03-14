@@ -30,5 +30,11 @@ namespace PcHut.Repository
 
             return list1;
         }
+
+        /*public List<product> SearchProduct(string productName)
+        {
+            *//*return this.context.products.OrderByDescending(x => x.price).Take(top).ToList();*//*
+            var list = context.products(x => )
+        }*/
     }
 }
