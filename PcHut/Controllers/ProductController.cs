@@ -58,6 +58,7 @@ namespace PcHut.Controllers
         [HttpGet]
         public ActionResult TopLaptopDetail()
         {
+<<<<<<< HEAD
             ProductRepository products = new ProductRepository();
             var laptop = products.TopLaptop();
 
@@ -71,6 +72,26 @@ namespace PcHut.Controllers
                 pr.warranty = p.warranty;
             }
             return View(pr);
+=======
+            ProductRepository buyers = new ProductRepository();
+            var allBuyers = buyers.BoughtByBuyers();
+            return View(allBuyers);
+        }*/
+        [HttpPost]
+        public ActionResult SearchProduct(FormCollection collection )
+        {
+            string name = collection["search"];
+            ProductRepository productRepository = new ProductRepository();
+           List<product> products= productRepository.Search(name);
+            return View(products);
+        }
+
+        public ActionResult SpecialCategory(FormCollection collection)
+        {
+            string type = collection["productType"];
+            ProductRepository productRepository = new ProductRepository();
+            return View(productRepository.SearchByType(type));
+>>>>>>> 29be6a0f0907bd2ad9d9e101ccb8e8bac18e9f12
         }
     }
 }

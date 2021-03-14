@@ -1,15 +1,25 @@
+<<<<<<< HEAD
 ﻿using System;
+=======
+﻿using PcHut.Models;
+using PcHut.Repository;
+using System;
+>>>>>>> 29be6a0f0907bd2ad9d9e101ccb8e8bac18e9f12
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+<<<<<<< HEAD
 using PcHut.Models;
 using PcHut.Repository;
+=======
+>>>>>>> 29be6a0f0907bd2ad9d9e101ccb8e8bac18e9f12
 
 namespace PcHut.Controllers
 {
     public class VendorController : Controller
     {
+<<<<<<< HEAD
         // GET: Vendor
         public ActionResult Index()
         {
@@ -35,6 +45,25 @@ namespace PcHut.Controllers
             var vendorInfo = vendor.Get((int)id);
 
             return View(vendorInfo);
+=======
+        private VendorRepository vendorRepository = new VendorRepository();
+        // GET: Vendor
+        public ActionResult Index()
+        { 
+            vendorRepository.GetAll();
+            return View(vendorRepository.GetAll());
+        }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(vendor vendor)
+        {
+            vendorRepository.Insert(vendor);
+            return RedirectToAction("Index");
+>>>>>>> 29be6a0f0907bd2ad9d9e101ccb8e8bac18e9f12
         }
     }
 }

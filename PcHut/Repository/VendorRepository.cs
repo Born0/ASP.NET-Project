@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,5 +30,17 @@ namespace PcHut.Repository
 
             return i;
         }*/
+=======
+﻿using PcHut.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace PcHut.Repository
+{
+    public class VendorRepository: Repository<vendor>
+    {
+>>>>>>> 29be6a0f0907bd2ad9d9e101ccb8e8bac18e9f12
     }
 }
