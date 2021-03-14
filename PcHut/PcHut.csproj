@@ -130,9 +130,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -172,7 +172,6 @@
     <Compile Include="Models\sales_record.cs">
       <DependentUpon>PcHutDbContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TopCustomerViewModel.cs" />
     <Compile Include="Models\user.cs">
       <DependentUpon>PcHutDbContext.tt</DependentUpon>
     </Compile>
@@ -182,11 +181,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BrandRepository.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
-    <Compile Include="Repository\InvoiceRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\VendorRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -249,19 +248,17 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Product\GetTopSold.cshtml" />
     <Content Include="Views\User\ProductBoughtByBuyers.cshtml" />
-<<<<<<< HEAD
-    <Content Include="Views\User\TopCustomerDetails.cshtml" />
-=======
     <Content Include="Views\Product\SearchProduct.cshtml" />
     <Content Include="Views\Product\SpecialCategory.cshtml" />
->>>>>>> eb9aeab208d2872259718bef966490f81c79917f
+    <Content Include="Views\Brand\Index.cshtml" />
+    <Content Include="Views\Vendor\Index.cshtml" />
+    <Content Include="Views\Vendor\Create.cshtml" />
+    <Content Include="Views\Brand\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
     <Folder Include="Resources\Icon\" />
-    <Folder Include="Views\Brand\" />
-    <Folder Include="Views\Invoice\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

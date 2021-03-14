@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<PcHut.Models.product>
 
 @{
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <!DOCTYPE html>
@@ -21,11 +23,7 @@
         </p>*@
     <a href="/user/index">All users</a> <br />
     @*<a href="/product/GetTopSold">Highest Number of Product Sold</a>*@
-    <a href="/user/ProductBoughtByBuyers">Product Bought By Buyers</a> <br />
-
-    <a href="/user/TopCustomerDetails">Top Customer Details</a> <br />
-
-
+    <a href="/user/ProductBoughtByBuyers">Product Bought By Buyers</a>
     <table class="table">
     <tr>
         <th>

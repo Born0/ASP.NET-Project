@@ -8,29 +8,25 @@ using System.Web.Mvc;
 
 namespace PcHut.Controllers
 {
-    public class BrandController : Controller
+    public class VendorController : Controller
     {
-        private BrandRepository brandRepository = new BrandRepository();
         private VendorRepository vendorRepository = new VendorRepository();
-        // GET: Brand
+        // GET: Vendor
         public ActionResult Index()
-        {
-            return View(brandRepository.GetAll());
+        { 
+            vendorRepository.GetAll();
+            return View(vendorRepository.GetAll());
         }
-
         [HttpGet]
         public ActionResult Create()
         {
-            ViewData["vendors"] = vendorRepository.GetAll();
             return View();
         }
         [HttpPost]
-        public ActionResult Create(brand brand)
+        public ActionResult Create(vendor vendor)
         {
-            
-            brandRepository.Insert(brand);
+            vendorRepository.Insert(vendor);
             return RedirectToAction("Index");
         }
-
     }
 }

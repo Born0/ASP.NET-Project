@@ -54,8 +54,6 @@ namespace PcHut.Controllers
             var allUsers = products.TopProductSold();
             return View(allUsers);
         }
-<<<<<<< HEAD
-=======
 
         /*[HttpGet]
         public ActionResult ProductBoughtByBuyers()
@@ -79,6 +77,5 @@ namespace PcHut.Controllers
             ProductRepository productRepository = new ProductRepository();
             return View(productRepository.SearchByType(type));
         }
->>>>>>> eb9aeab208d2872259718bef966490f81c79917f
     }
 }

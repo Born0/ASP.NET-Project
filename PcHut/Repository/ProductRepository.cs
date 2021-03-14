@@ -30,14 +30,6 @@ namespace PcHut.Repository
 
             return list1;
         }
-<<<<<<< HEAD
-
-        /*public List<product> SearchProduct(string productName)
-        {
-            *//*return this.context.products.OrderByDescending(x => x.price).Take(top).ToList();*//*
-            var list = context.products(x => )
-        }*/
-=======
         public List<product> Search(string name)
         {
             // return this.context.products.Where(x => x.product_name == name).ToList();
@@ -54,6 +46,5 @@ namespace PcHut.Repository
             }
             return products;
         }
->>>>>>> eb9aeab208d2872259718bef966490f81c79917f
     }
 }
