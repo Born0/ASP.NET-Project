@@ -297,4 +297,3 @@ D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.csproj.CoreCompileInputs
 D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.csproj.CopyComplete
 D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.dll
 D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.pdb
-D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.csprojAssemblyReference.cache

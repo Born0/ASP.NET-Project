@@ -55,24 +55,9 @@ namespace PcHut.Controllers
             return View(allUsers);
         }
 
-        [HttpGet]
-        public ActionResult TopLaptopDetail()
+        /*[HttpGet]
+        public ActionResult ProductBoughtByBuyers()
         {
-<<<<<<< HEAD
-            ProductRepository products = new ProductRepository();
-            var laptop = products.TopLaptop();
-
-            product pr = new product();
-
-            foreach(product p in laptop)
-            {
-                pr.product_id = p.product_id;
-                pr.product_name = p.product_name;
-                pr.price = p.price;
-                pr.warranty = p.warranty;
-            }
-            return View(pr);
-=======
             ProductRepository buyers = new ProductRepository();
             var allBuyers = buyers.BoughtByBuyers();
             return View(allBuyers);
@@ -91,7 +76,6 @@ namespace PcHut.Controllers
             string type = collection["productType"];
             ProductRepository productRepository = new ProductRepository();
             return View(productRepository.SearchByType(type));
->>>>>>> 29be6a0f0907bd2ad9d9e101ccb8e8bac18e9f12
         }
     }
 }
