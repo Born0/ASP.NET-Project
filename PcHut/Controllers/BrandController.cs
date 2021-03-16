@@ -1,4 +1,4 @@
-﻿using PcHut.Models;
+using PcHut.Models;
 using PcHut.Repository;
 using System;
 using System.Collections.Generic;
@@ -31,6 +31,38 @@ namespace PcHut.Controllers
             brandRepository.Insert(brand);
             return RedirectToAction("Index");
         }
-     
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            return View(brandRepository.Get(id));
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult ConfirmDelete(int id)
+        {
+            brandRepository.Delete(id);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            ViewData["vendors"] = vendorRepository.GetAll();
+            return View(brandRepository.Get(id));
+        }
+        [HttpPost]
+        public ActionResult Edit(brand brand)
+        {
+
+          
+            brandRepository.Update(brand);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+
+            ViewData["vendors"] = vendorRepository.GetAll();
+            return View(brandRepository.Get(id));
+        }
+
     }
 }
