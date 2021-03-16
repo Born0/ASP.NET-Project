@@ -10,6 +10,11 @@ namespace PcHut.Repository
     {
 
     //borno
+<<<<<<< Updated upstream
     //heloooooooooooo123423423
+=======
+    //heloooooooooooo
+    //rimon
+>>>>>>> Stashed changes
     }
 }
