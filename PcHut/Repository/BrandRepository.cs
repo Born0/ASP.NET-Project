@@ -8,7 +8,7 @@ namespace PcHut.Repository
 {
     public class BrandRepository : Repository<brand>
     {
-    //hello
-    //hello world
+
+    //borno
     }
 }
