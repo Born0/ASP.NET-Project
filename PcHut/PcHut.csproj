@@ -244,7 +244,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Product\GetTopSold.cshtml" />
-    <Content Include="Views\User\ProductBoughtByBuyers.cshtml" />
     <Content Include="Views\Product\SearchProduct.cshtml" />
     <Content Include="Views\Product\SpecialCategory.cshtml" />
     <Content Include="Views\Brand\Index.cshtml" />
@@ -254,6 +253,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\User\ProductBoughtByBuyers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

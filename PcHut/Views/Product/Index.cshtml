@@ -5,86 +5,91 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<a href="/product/create">Create Product</a>
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
-<a href="/user/index">All users</a>
-<br />
-@*<a href="/product/GetTopSold">Highest Number of Product Sold</a>*@
-<a href="/user/ProductBoughtByBuyers">Product Bought By Buyers</a>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.product_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.warranty)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.specification)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Special)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.brand.brand_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.category.category_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.image)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+<h2>Products</h2>
+@{
+    string userType = Session["user_type"].ToString();
+    if (int.Parse(userType) == 1 || int.Parse(userType) == 2)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.product_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.warranty)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.price)
-            </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.specification)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Special)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.brand.brand_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.category.category_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.image)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.product_id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.product_id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.product_id })
-            </td>
-        </tr>
+        <a href="/product/create">Create Product</a> 
+        <a href="/user/index">All users</a>
+        <a href="/user/ProductBoughtByBuyers">Product Bought By Buyers</a>
+        } 
     }
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.product_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.warranty)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
 
-</table>
+                <th>
+                    @Html.DisplayNameFor(model => model.specification)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Special)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.brand.brand_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.category.category_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.image)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.warranty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.specification)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Special)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.brand.brand_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.category.category_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.image)
+                    </td>
+                    @{ 
+                        if (int.Parse(userType) == 1 || int.Parse(userType) == 2)
+                        {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.product_id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.product_id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.product_id })
+                    </td>
+                        }
+                    }
+                </tr>
+            }
+
+        </table>

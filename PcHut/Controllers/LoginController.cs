@@ -14,7 +14,7 @@ namespace PcHut.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            //abc
+            
             return View();
         }
         [HttpPost]
@@ -38,8 +38,11 @@ namespace PcHut.Controllers
                 }
                 else
                 {
-                    HttpContext.Session["user_id"] = cred.user_id;
-                    HttpContext.Session["user_type"] = cred.user_type;
+                    Session["user_id"] = cred.user_id;
+                    Session["user_type"] = cred.user_type; 
+                    //////////changed to fixed value for working
+                    //Session["user_type"] = 1;
+
                     return RedirectToAction("Index", "Home");
                 }
             }

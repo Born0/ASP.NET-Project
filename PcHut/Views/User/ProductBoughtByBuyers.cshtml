@@ -1,31 +1,50 @@
-﻿
+﻿@model IEnumerable<PcHut.Models.user>
+
 @{
-    Layout = null;
+    ViewBag.Title = "ProductBoughtByBuyers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<h2>ProductBoughtByBuyers</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ProductBoughtByBuyers</title>
-</head>
-<body>
-    <table align="center">
-        <tr>
-            <td>User Name</td>
-            <td>User Email</td>
-            <td>Phone</td>
-        </tr>
 
-        @foreach(var data in Model)
-        {
-            <tr>
-                <td>@data.user_name</td>
-                <td>@data.email</td>
-                <td>@data.phone</td>
-            </tr>
-        }
-    </table>
-</body>
-</html>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.user_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.registration_date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.registration_date)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.user_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.user_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.user_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -26,8 +26,15 @@
                     <li>@Html.ActionLink("Product", "Index", "Product")</li>
                     <li>@Html.ActionLink("Brand", "Index", "Brand")</li>
                     <li>@Html.ActionLink("Vendor", "Index", "Vendor")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @{
+                        @*string userType = Session["user_type"].ToString();*@
+                        string userType = "1";
+                        if (int.Parse(userType) == 3)
+                        {
+                            <li> @Html.ActionLink("View Stats", "Stats", "Admin")</li>
+                            <li> @Html.ActionLink("Management", "Management", "Admin")</li>
+                        }
+                    }
                 </ul>
             </div>
         </div>

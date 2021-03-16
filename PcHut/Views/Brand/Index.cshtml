@@ -6,10 +6,16 @@
 }
 
 <h2>Index</h2>
+@{
+    string userType = Session["user_type"].ToString();
+    if (int.Parse(userType) == 1 || int.Parse(userType)==2)
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    }
+}
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -21,20 +27,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.brand_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.vendor.vendor_name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.brand_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.brand_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.brand_id })
-        </td>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.brand_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.vendor.vendor_name)
+    </td>
+    @{
+        if (int.Parse(userType) == 1 || int.Parse(userType) == 2)
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.brand_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.brand_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.brand_id })
+            </td>
+            }
+        }
+
     </tr>
-}
+    }
 
 </table>

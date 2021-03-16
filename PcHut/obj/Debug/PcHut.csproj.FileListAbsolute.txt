@@ -238,8 +238,6 @@ D:\ASP Dot Net Projects\Project 2\ASP.NET-Project\PcHut\obj\Debug\PcHut.csproj.C
 D:\ASP Dot Net Projects\Project 2\ASP.NET-Project\PcHut\obj\Debug\PcHut.csproj.CopyComplete
 D:\ASP Dot Net Projects\Project 2\ASP.NET-Project\PcHut\obj\Debug\PcHut.dll
 D:\ASP Dot Net Projects\Project 2\ASP.NET-Project\PcHut\obj\Debug\PcHut.pdb
-D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.csprojAssemblyReference.cache
-D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.csproj.CoreCompileInputs.cache
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\PcHut.dll.config
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\PcHut.dll
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\PcHut.pdb
@@ -295,6 +293,8 @@ D:\Class\ASP .net\ASP.NET Project\PcHut\bin\System.Web.WebPages.Razor.xml
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\Newtonsoft.Json.xml
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\Antlr3.Runtime.pdb
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.csproj.CoreCompileInputs.cache
 D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.csproj.CopyComplete
 D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.dll
 D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.pdb
+D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.csprojAssemblyReference.cache
