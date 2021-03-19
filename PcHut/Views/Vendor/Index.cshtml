@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PcHut.Models.vendor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.vendor_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vendor_email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.vendor_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vendor_email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.vendor_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.vendor_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.vendor_id }) |
+           
+
+        </td>
+    </tr>
+}
+
+</table>

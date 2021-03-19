@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PcHut.Models.product>
+
+@{
+    ViewBag.Title = "SearchProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SearchProduct</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.product_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.warranty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.brand.brand_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category.category_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.product_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.warranty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.brand.brand_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category.category_name)
+        </td>
+       
+    </tr>
+}
+
+</table>

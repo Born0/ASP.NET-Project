@@ -91,6 +91,7 @@ namespace PcHut.Controllers
         [HttpPost]
         public ActionResult Edit(product product)
         {
+<<<<<<< HEAD
             ProductRepository product1 = new ProductRepository();
             product.status = 1;
             product1.Update(product);
@@ -113,6 +114,26 @@ namespace PcHut.Controllers
             product1.Update(product);
 
             return RedirectToAction("Index");
+=======
+            ProductRepository buyers = new ProductRepository();
+            var allBuyers = buyers.BoughtByBuyers();
+            return View(allBuyers);
+        }*/
+        [HttpPost]
+        public ActionResult SearchProduct(FormCollection collection )
+        {
+            string name = collection["search"];
+            ProductRepository productRepository = new ProductRepository();
+           List<product> products= productRepository.Search(name);
+            return View(products);
+        }
+
+        public ActionResult SpecialCategory(FormCollection collection)
+        {
+            string type = collection["productType"];
+            ProductRepository productRepository = new ProductRepository();
+            return View(productRepository.SearchByType(type));
+>>>>>>> 69e4238c60dadea905f4504c87bca31b9d8d7aa1
         }
     }
 }

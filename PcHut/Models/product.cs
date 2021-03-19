@@ -30,10 +30,14 @@ namespace PcHut.Models
         [Range(1.0, Double.MaxValue, ErrorMessage = "Value should be greater than or equal to 1")]
         public double price { get; set; }
         public string image { get; set; }
+<<<<<<< HEAD
 
         [Required(ErrorMessage = "Specification is Required")]
         public string specification { get; set; }
 
+=======
+        public string specification { get; set; }
+>>>>>>> 69e4238c60dadea905f4504c87bca31b9d8d7aa1
         public string Special { get; set; }
     
         public virtual brand brand { get; set; }

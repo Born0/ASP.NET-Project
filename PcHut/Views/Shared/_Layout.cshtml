@@ -16,13 +16,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @*<a href="@Url.Action("Index", "Home", null)">
+                    <img src="~/Resources/Image/Laptop Logo.png"  style="vertical-align: middle; height:40px" width:50px">*@
+                    @Html.ActionLink("PC Hut", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                    <li>@Html.ActionLink("Product", "Index", "Product")</li>
+                    <li>@Html.ActionLink("Brand", "Index", "Brand")</li>
+                    <li>@Html.ActionLink("Vendor", "Index", "Vendor")</li>
+                    @{
+                        @*string userType = Session["user_type"].ToString();*@
+                        string userType = "1";
+                        if (int.Parse(userType) == 3)
+                        {
+                            <li> @Html.ActionLink("View Stats", "Stats", "Admin")</li>
+                            <li> @Html.ActionLink("Management", "Management", "Admin")</li>
+                        }
+                    }
                 </ul>
             </div>
         </div>
