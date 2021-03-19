@@ -40,5 +40,12 @@ namespace PcHut.Repository
             List<product> products= this.context.products.Where(x => x.Special == type).ToList();
             return products;
         }
+
+        public DbSqlQuery<product> TopLaptop()
+        {
+            var product = context.products.SqlQuery(@"select * from product where product_id in (select top 1 product_id from sales_record where product_id in (select product_id from product where category_id = (select category_id from category where category_id = 2)) group by product_id order by sum(quantity) desc)");
+
+            return product;
+        }
     }
 }

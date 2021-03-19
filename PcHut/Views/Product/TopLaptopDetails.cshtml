@@ -1,0 +1,75 @@
+﻿@model PcHut.Models.product
+
+@{
+    ViewBag.Title = "TopLaptopDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TopLaptopDetails</h2>
+
+<div>
+    <h4>product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.product_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.warranty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.warranty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.specification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.specification)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Special)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Special)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.brand.brand_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brand.brand_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category.category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category.category_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.product_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

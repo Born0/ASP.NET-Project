@@ -1,0 +1,42 @@
+﻿@model PcHut.Models.vendor
+
+@{
+    ViewBag.Title = "VendorWithMaxBrand";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>VendorWithMaxBrand</h2>
+
+<div>
+    <h4>vendor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.vendor_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vendor_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vendor_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vendor_email)
+        </dd>
+        <dt>
+           <label>Total number of brands</label>
+        </dt>
+
+        <dd>
+            @ViewData["totalAmount"]
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.vendor_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
