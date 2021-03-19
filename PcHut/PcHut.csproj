@@ -130,7 +130,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+<<<<<<< HEAD
+    <Compile Include="Controllers\InvoiceController.cs" />
+=======
     <Compile Include="Controllers\LoginController.cs" />
+>>>>>>> 69e4238c60dadea905f4504c87bca31b9d8d7aa1
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
@@ -170,16 +174,23 @@
     <Compile Include="Models\sales_record.cs">
       <DependentUpon>PcHutDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TopCustomerViewModel.cs" />
+    <Compile Include="Models\TopSellerRef.cs" />
     <Compile Include="Models\user.cs">
       <DependentUpon>PcHutDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vendor.cs">
       <DependentUpon>PcHutDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\VendorMaxBrandViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BrandRepository.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
+<<<<<<< HEAD
+    <Compile Include="Repository\InvoiceRepository.cs" />
+=======
     <Compile Include="Repository\CredentialRepository.cs" />
+>>>>>>> 69e4238c60dadea905f4504c87bca31b9d8d7aa1
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
@@ -254,11 +265,24 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\User\ProductBoughtByBuyers.cshtml" />
+    <Content Include="Views\User\TopCustomerDetails.cshtml" />
+    <Content Include="Views\Vendor\VendorWithMaxBrand.cshtml" />
+    <Content Include="Views\Product\TopLaptopDetail.cshtml" />
+    <Content Include="Views\User\TopSellerReferenceDetails.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\User\Registration.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
+<<<<<<< HEAD
+    <Folder Include="Views\Brand\" />
+    <Folder Include="Views\Invoice\" />
+=======
     <Folder Include="Resources\Icon\" />
+>>>>>>> 69e4238c60dadea905f4504c87bca31b9d8d7aa1
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

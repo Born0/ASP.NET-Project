@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Registration</h2>
+
+<html>
+    <body>
+
+        <script>
+            function teacherRegister() {
+                @*alert('fwe');
+                document.getElementById('err_username').innerHTML = " ";
+                alert("hello");
+                document.getElementById('err_userEmail').innerHTML = " ";
+                document.getElementById('err_userPassword').innerHTML = " ";*@
+                
+                var name = document.getElementById('userName').value;
+                var email = document.getElementById('userEmail').value;
+                var pass = document.getElementById('userPassword').value;
+                var phone = document.getElementById('userPhone').value;
+
+                var zero = name.search("0");
+                var one = name.search("1");
+                var two = name.search("2");
+                var three = name.search("3");
+                var four = name.search("4");
+                var five = name.search("5");
+                var six = name.search("6");
+                var seven = name.search("7");
+                var eight = name.search("8");
+                var nine = name.search("9");
+
+                //alert('afi');
+
+                if (name != "") {
+                    //alert("hello 1");
+                    //document.getElementById('err_userName').innerHTML = " ";
+                    document.getElementById('err_userEmail').innerHTML = " ";
+                    document.getElementById('err_userPassword').innerHTML = " ";
+                    document.getElementById('err_userPhone').innerHTML = " ";
+
+                    if (zero != -1 || one != -1 || three != -1 || four != -1 || five != -1 || six != -1 ||
+                        seven != -1 || eight != -1 || nine != -1 || two != -1) {
+                        //alert("name conatins number");
+                        document.getElementById('err_userName').innerHTML = "Name Cannot have a number!";
+                        return false;
+                    }
+                    //return false;
+                }
+                if (name == "") {
+                    //alert("hello");
+                    document.getElementById('err_userName').innerHTML = "Name Must be Filled";
+                    return false;
+                }
+
+                if (email != "") {
+                    //alert("hello");
+                    //document.getElementById('err_userEmail').innerHTML = " ";
+
+                    document.getElementById('err_userName').innerHTML = " ";
+                    document.getElementById('err_userEmail').innerHTML = " ";
+                    document.getElementById('err_userPassword').innerHTML = " ";
+                    document.getElementById('err_userPhone').innerHTML = " ";
+                    //return false;
+                }
+                if (email == "") {
+                    //alert("hello");
+                    document.getElementById('err_userEmail').innerHTML = "Email Must be Filled";
+                    return false;
+                }
+
+                if (pass != "") {
+                    //alert("hello")
+                    //document.getElementById('err_userPassword').innerHTML = " ";
+
+                    document.getElementById('err_userName').innerHTML = " ";
+                    document.getElementById('err_userEmail').innerHTML = " ";
+                    document.getElementById('err_userPassword').innerHTML = " ";
+                    document.getElementById('err_userPhone').innerHTML = " ";
+
+
+                    if (pass.length < 5) {
+                        //alert("name length");
+                        document.getElementById('err_userPassword').innerHTML = "Password Must be at least 5 characters long";
+                        return false;
+                    }
+                    //return false;
+                }
+                if (pass == "") {
+                    //alert("hello")
+                    document.getElementById('err_userPassword').innerHTML = "Password Must be Filled";
+                    return false;
+                }
+
+                if (phone != "") {
+                    //alert("hello")
+                    //document.getElementById('err_userPhone').innerHTML = " ";
+
+                    document.getElementById('err_userName').innerHTML = " ";
+                    document.getElementById('err_userEmail').innerHTML = " ";
+                    document.getElementById('err_userPassword').innerHTML = " ";
+                    document.getElementById('err_userPhone').innerHTML = " ";
+
+                    //return false;
+                }
+                if (phone == "") {
+                    //alert("hello")
+                    document.getElementById('err_userPhone').innerHTML = "Phone Must be Filled";
+                    return false;
+                }
+
+                alert("Registration Done!!")
+                return true;
+            }
+        </script>
+    
+
+        <form action="/user/Registration" method="post" id="register" onsubmit="return teacherRegister()">
+            <table align="center">
+                <tr>
+                    <td>User Name</td>
+                    <td>
+                        <input type="text" name="userName" id="userName" />
+                    </td>
+                    <td>
+                        <span id="err_userName"> </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>
+                        <input type="text" name="userEmail" id="userEmail" />
+                    </td>
+                    <td>
+                        <span id="err_userEmail"> </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>
+                        <input type="password" name="userPassword" id="userPassword" />
+                    </td>
+                    <td>
+                        <span id="err_userPassword"> </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td>
+                        <input type="text" name="userPhone" id="userPhone" />
+                    </td>
+                    <td>
+                        <span id="err_userPhone"> </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="register" value="Sign Up" />
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+    </body>
+</html>
