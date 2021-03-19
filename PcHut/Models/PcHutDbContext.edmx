@@ -29,15 +29,6 @@
           <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="user_type" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
-        <EntityType Name="description">
-          <Key>
-            <PropertyRef Name="description_id" />
-          </Key>
-          <Property Name="description_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="product_id" Type="int" Nullable="false" />
-          <Property Name="specification" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="extra" Type="varchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="invoice">
           <Key>
             <PropertyRef Name="invoice_id" />
@@ -60,6 +51,8 @@
           <Property Name="warranty" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="price" Type="float" Nullable="false" />
           <Property Name="image" Type="varchar" MaxLength="120" />
+          <Property Name="specification" Type="varchar" MaxLength="120" />
+          <Property Name="Special" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sales_record">
           <Key>
@@ -115,18 +108,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_description_product">
-          <End Role="product" Type="Self.product" Multiplicity="1" />
-          <End Role="description" Type="Self.description" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="product">
-              <PropertyRef Name="product_id" />
-            </Principal>
-            <Dependent Role="description">
-              <PropertyRef Name="product_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_product_brand">
           <End Role="brand" Type="Self.brand" Multiplicity="1" />
           <End Role="product" Type="Self.product" Multiplicity="*" />
@@ -155,7 +136,6 @@
           <EntitySet Name="brand" EntityType="Self.brand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="credential" EntityType="Self.credential" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="description" EntityType="Self.description" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="invoice" EntityType="Self.invoice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sales_record" EntityType="Self.sales_record" Schema="dbo" store:Type="Tables" />
@@ -168,10 +148,6 @@
           <AssociationSet Name="FK_credentials_user" Association="Self.FK_credentials_user">
             <End Role="user" EntitySet="user" />
             <End Role="credential" EntitySet="credential" />
-          </AssociationSet>
-          <AssociationSet Name="FK_description_product" Association="Self.FK_description_product">
-            <End Role="product" EntitySet="product" />
-            <End Role="description" EntitySet="description" />
           </AssociationSet>
           <AssociationSet Name="FK_product_brand" Association="Self.FK_product_brand">
             <End Role="brand" EntitySet="brand" />
@@ -215,16 +191,6 @@
           <Property Name="user_type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="user" Relationship="Self.FK_credentials_user" FromRole="credential" ToRole="user" />
         </EntityType>
-        <EntityType Name="description">
-          <Key>
-            <PropertyRef Name="description_id" />
-          </Key>
-          <Property Name="description_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="product_id" Type="Int32" Nullable="false" />
-          <Property Name="specification" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="extra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="product" Relationship="Self.FK_description_product" FromRole="description" ToRole="product" />
-        </EntityType>
         <EntityType Name="invoice">
           <Key>
             <PropertyRef Name="invoice_id" />
@@ -247,9 +213,10 @@
           <Property Name="warranty" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="price" Type="Double" Nullable="false" />
           <Property Name="image" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="specification" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="Special" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="brand" Relationship="Self.FK_product_brand" FromRole="product" ToRole="brand" />
           <NavigationProperty Name="category" Relationship="Self.FK_product_category" FromRole="product" ToRole="category" />
-          <NavigationProperty Name="descriptions" Relationship="Self.FK_description_product" FromRole="product" ToRole="description" />
         </EntityType>
         <EntityType Name="sales_record">
           <Key>
@@ -331,23 +298,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_description_product">
-          <End Role="product" Type="Self.product" Multiplicity="1" />
-          <End Role="description" Type="Self.description" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="product">
-              <PropertyRef Name="product_id" />
-            </Principal>
-            <Dependent Role="description">
-              <PropertyRef Name="product_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="pchutEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="pchutEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="brands" EntityType="Self.brand" />
           <EntitySet Name="categories" EntityType="Self.category" />
           <EntitySet Name="credentials" EntityType="Self.credential" />
-          <EntitySet Name="descriptions" EntityType="Self.description" />
           <EntitySet Name="invoices" EntityType="Self.invoice" />
           <EntitySet Name="products" EntityType="Self.product" />
           <EntitySet Name="sales_record" EntityType="Self.sales_record" />
@@ -369,17 +323,13 @@
             <End Role="user" EntitySet="users" />
             <End Role="credential" EntitySet="credentials" />
           </AssociationSet>
-          <AssociationSet Name="FK_description_product" Association="Self.FK_description_product">
-            <End Role="product" EntitySet="products" />
-            <End Role="description" EntitySet="descriptions" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="pchutModelStoreContainer" CdmEntityContainer="pchutEntities1">
+        <EntityContainerMapping StorageEntityContainer="pchutModelStoreContainer" CdmEntityContainer="pchutEntities2">
           <EntitySetMapping Name="brands">
             <EntityTypeMapping TypeName="pchutModel.brand">
               <MappingFragment StoreEntitySet="brand">
@@ -407,16 +357,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="descriptions">
-            <EntityTypeMapping TypeName="pchutModel.description">
-              <MappingFragment StoreEntitySet="description">
-                <ScalarProperty Name="description_id" ColumnName="description_id" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="specification" ColumnName="specification" />
-                <ScalarProperty Name="extra" ColumnName="extra" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="invoices">
             <EntityTypeMapping TypeName="pchutModel.invoice">
               <MappingFragment StoreEntitySet="invoice">
@@ -439,6 +379,8 @@
                 <ScalarProperty Name="warranty" ColumnName="warranty" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="specification" ColumnName="specification" />
+                <ScalarProperty Name="Special" ColumnName="Special" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

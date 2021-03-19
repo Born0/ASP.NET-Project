@@ -11,27 +11,32 @@ namespace PcHut.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class product
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public product()
-        {
-            this.descriptions = new HashSet<description>();
-        }
-    
         public int product_id { get; set; }
+
+        [Required(ErrorMessage ="Product Name is Required")]
         public string product_name { get; set; }
+
         public int brand_id { get; set; }
         public int category_id { get; set; }
         public int status { get; set; }
+
+        [Required(ErrorMessage = "Warranty is Required")]
         public string warranty { get; set; }
+
+        [Range(1.0, Double.MaxValue, ErrorMessage = "Value should be greater than or equal to 1")]
         public double price { get; set; }
         public string image { get; set; }
+
+        [Required(ErrorMessage = "Specification is Required")]
+        public string specification { get; set; }
+
+        public string Special { get; set; }
     
         public virtual brand brand { get; set; }
         public virtual category category { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<description> descriptions { get; set; }
     }
 }

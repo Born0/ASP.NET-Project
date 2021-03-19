@@ -13,10 +13,10 @@ namespace PcHut.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class pchutEntities1 : DbContext
+    public partial class pchutEntities2 : DbContext
     {
-        public pchutEntities1()
-            : base("name=pchutEntities1")
+        public pchutEntities2()
+            : base("name=pchutEntities2")
         {
         }
     
@@ -28,7 +28,6 @@ namespace PcHut.Models
         public virtual DbSet<brand> brands { get; set; }
         public virtual DbSet<category> categories { get; set; }
         public virtual DbSet<credential> credentials { get; set; }
-        public virtual DbSet<description> descriptions { get; set; }
         public virtual DbSet<invoice> invoices { get; set; }
         public virtual DbSet<product> products { get; set; }
         public virtual DbSet<sales_record> sales_record { get; set; }

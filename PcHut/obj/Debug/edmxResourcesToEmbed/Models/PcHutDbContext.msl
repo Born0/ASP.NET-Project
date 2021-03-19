@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="pchutModelStoreContainer" CdmEntityContainer="pchutEntities1">
+  <EntityContainerMapping StorageEntityContainer="pchutModelStoreContainer" CdmEntityContainer="pchutEntities2">
     <EntitySetMapping Name="brands">
       <EntityTypeMapping TypeName="pchutModel.brand">
         <MappingFragment StoreEntitySet="brand">
@@ -28,16 +28,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="descriptions">
-      <EntityTypeMapping TypeName="pchutModel.description">
-        <MappingFragment StoreEntitySet="description">
-          <ScalarProperty Name="description_id" ColumnName="description_id" />
-          <ScalarProperty Name="product_id" ColumnName="product_id" />
-          <ScalarProperty Name="specification" ColumnName="specification" />
-          <ScalarProperty Name="extra" ColumnName="extra" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="invoices">
       <EntityTypeMapping TypeName="pchutModel.invoice">
         <MappingFragment StoreEntitySet="invoice">
@@ -60,6 +50,8 @@
           <ScalarProperty Name="warranty" ColumnName="warranty" />
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="specification" ColumnName="specification" />
+          <ScalarProperty Name="Special" ColumnName="Special" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

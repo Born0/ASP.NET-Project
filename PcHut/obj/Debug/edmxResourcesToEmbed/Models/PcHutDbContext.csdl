@@ -28,16 +28,6 @@
     <Property Name="user_type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="user" Relationship="Self.FK_credentials_user" FromRole="credential" ToRole="user" />
   </EntityType>
-  <EntityType Name="description">
-    <Key>
-      <PropertyRef Name="description_id" />
-    </Key>
-    <Property Name="description_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="product_id" Type="Int32" Nullable="false" />
-    <Property Name="specification" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="extra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="product" Relationship="Self.FK_description_product" FromRole="description" ToRole="product" />
-  </EntityType>
   <EntityType Name="invoice">
     <Key>
       <PropertyRef Name="invoice_id" />
@@ -60,9 +50,10 @@
     <Property Name="warranty" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="price" Type="Double" Nullable="false" />
     <Property Name="image" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="specification" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="Special" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="brand" Relationship="Self.FK_product_brand" FromRole="product" ToRole="brand" />
     <NavigationProperty Name="category" Relationship="Self.FK_product_category" FromRole="product" ToRole="category" />
-    <NavigationProperty Name="descriptions" Relationship="Self.FK_description_product" FromRole="product" ToRole="description" />
   </EntityType>
   <EntityType Name="sales_record">
     <Key>
@@ -144,23 +135,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_description_product">
-    <End Role="product" Type="Self.product" Multiplicity="1" />
-    <End Role="description" Type="Self.description" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="product">
-        <PropertyRef Name="product_id" />
-      </Principal>
-      <Dependent Role="description">
-        <PropertyRef Name="product_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="pchutEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="pchutEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="brands" EntityType="Self.brand" />
     <EntitySet Name="categories" EntityType="Self.category" />
     <EntitySet Name="credentials" EntityType="Self.credential" />
-    <EntitySet Name="descriptions" EntityType="Self.description" />
     <EntitySet Name="invoices" EntityType="Self.invoice" />
     <EntitySet Name="products" EntityType="Self.product" />
     <EntitySet Name="sales_record" EntityType="Self.sales_record" />
@@ -181,10 +159,6 @@
     <AssociationSet Name="FK_credentials_user" Association="Self.FK_credentials_user">
       <End Role="user" EntitySet="users" />
       <End Role="credential" EntitySet="credentials" />
-    </AssociationSet>
-    <AssociationSet Name="FK_description_product" Association="Self.FK_description_product">
-      <End Role="product" EntitySet="products" />
-      <End Role="description" EntitySet="descriptions" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

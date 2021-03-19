@@ -55,12 +55,64 @@ namespace PcHut.Controllers
             return View(allUsers);
         }
 
-        /*[HttpGet]
-        public ActionResult ProductBoughtByBuyers()
+        [HttpGet]
+        public ActionResult TopLaptopDetail()
         {
-            ProductRepository buyers = new ProductRepository();
-            var allBuyers = buyers.BoughtByBuyers();
-            return View(allBuyers);
-        }*/
+            ProductRepository products = new ProductRepository();
+            var laptop = products.TopLaptop();
+
+            product pr = new product();
+
+            foreach(product p in laptop)
+            {
+                pr.product_id = p.product_id;
+                pr.product_name = p.product_name;
+                pr.price = p.price;
+                pr.warranty = p.warranty;
+            }
+            return View(pr);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            CategoryRepository categoryList = new CategoryRepository();
+            ViewData["categories"] = categoryList.GetAll();
+
+            BrandRepository brandList = new BrandRepository();
+            ViewData["brands"] = brandList.GetAll();
+
+            ProductRepository product = new ProductRepository();
+            product product1 = product.Get(id);
+            
+            return View(product1);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(product product)
+        {
+            ProductRepository product1 = new ProductRepository();
+            product.status = 1;
+            product1.Update(product);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            ProductRepository product = new ProductRepository();
+            product product1 = product.Get(id);
+            
+            return RedirectToAction("ChangeProductStatus", product1);
+        }
+
+        public ActionResult ChangeProductStatus(product product)
+        {
+            ProductRepository product1 = new ProductRepository();
+            product.status = 0;
+            product1.Update(product);
+
+            return RedirectToAction("Index");
+        }
     }
 }
