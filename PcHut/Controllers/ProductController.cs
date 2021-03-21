@@ -11,6 +11,7 @@ namespace PcHut.Controllers
 {
     public class ProductController : Controller
     {
+        private ProductRepository product1 = new ProductRepository();
         // GET: Product
         public ActionResult Index()
         {
@@ -138,11 +139,19 @@ namespace PcHut.Controllers
 
         public ActionResult ChangeProductStatus(product product)
         {
-            ProductRepository product1 = new ProductRepository();
+            
             product.status = 0;
             product1.Update(product);
 
             return RedirectToAction("Index");
         }
+
+       /* public ActionResult PriceFilter(FormCollection collection)
+        {
+            float min = float.Parse(collection["minimum"]);
+            float max = float.Parse(collection["maximum"]);
+            List<product> products = product1.PriceFilter(min, max);  //--------send list to index
+            return View();
+        }*/
     }
 }

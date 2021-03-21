@@ -47,5 +47,11 @@ namespace PcHut.Repository
 
             return product;
         }
+
+        public List<product> PriceFilter(float min, float max)
+        {
+            List<product> products = this.context.products.Where(x => x.price >= min && x.price <= max).ToList();
+            return products;
+        }
     }
 }
