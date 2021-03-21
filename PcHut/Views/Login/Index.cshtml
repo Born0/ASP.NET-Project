@@ -6,9 +6,20 @@
 }
 
 <h2>Login</h2>
+
+<h3>
+    New here ? 
+    <a href="/user/Registration">Sign Up</a>
+    <br />
+</h3>
+
 <h3>@ViewBag.error</h3>
 <form method="post" action="/Login/Index">
+    <label>usee id</label>
+    <label style="padding-left:130px">password</label>
+    <br />
     <input type="text" name="user_id" id="user_id" />
+
     <input type="text" name="password" id="password" />
     <button type="submit" name="loginBtn"> Login</button>
 </form>

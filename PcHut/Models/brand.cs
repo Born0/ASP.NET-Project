@@ -11,7 +11,8 @@ namespace PcHut.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class brand
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,8 @@ namespace PcHut.Models
         }
     
         public int brand_id { get; set; }
+       // [RegularExpression("^[a-zA-Z ]*$",ErrorMessage = "Can't use number")]
+       [Required(ErrorMessage= " can't be empty")]
         public string brand_name { get; set; }
         public int vendor_id { get; set; }
     

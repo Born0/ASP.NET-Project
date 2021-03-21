@@ -24,5 +24,13 @@ namespace PcHut.Repository
 
             return list1;
         }
+
+        public user GetByPhone( string phone)
+        {
+            user newUser = this.context.users.Where(x => x.phone == phone).FirstOrDefault();
+
+            return newUser;
+
+        }
     }
 }

@@ -91,8 +91,18 @@ namespace PcHut.Controllers
             newUser.password = collection["userPassword"];
             newUser.registration_date = DateTime.Now;
 
-            UserRepository addUser = new UserRepository();
-            addUser.Insert(newUser);
+            UserRepository uRepo = new UserRepository();
+            uRepo.Insert(newUser);
+            int id= uRepo.GetByPhone(newUser.phone).user_id;
+
+
+            credential nCred = new credential();
+            nCred.user_id = id;
+            nCred.password = newUser.password;
+            nCred.user_type = "3";
+
+            CredentialRepository credentialRepository = new CredentialRepository();
+            credentialRepository.Insert(nCred);
 
             return RedirectToAction("Index", "Product");
         }

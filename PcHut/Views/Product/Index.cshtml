@@ -3,20 +3,24 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
-
 <h2>Products</h2>
 @{
-    string userType = Session["user_type"].ToString();
-    if (int.Parse(userType) == 1 || int.Parse(userType) == 2)
+    if(Session["user_type"] != null)
     {
-        <a href="/product/create">Create Product</a>
-        <a href="/user/index">All users</a>
-        <a href="/user/ProductBoughtByBuyers">Product Bought By Buyers</a>
+        string userType = Session["user_type"].ToString();
+        if (int.Parse(userType) == 1 || int.Parse(userType) == 2)
+        {
+            <a href="/product/create">Create Product</a>
+        }
+       
     }
 }
 
-<a href="/user/TopCustomerDetails">Top Customer Details</a>
+
+
+@*<a href="/user/TopCustomerDetails">Top Customer Details</a>
 <br />
 
 <a href="/vendor/VendorWithMaxBrand">Vendor With Maximum Number of Brands</a>
@@ -26,10 +30,9 @@
 <br />
 
 <a href="/user/TopSellerReferenceDetails">Top Seller Reference Details</a>
-<br />
+<br />*@
 
-<a href="/user/Registration">Sign Up</a>
-<br />
+
 
 <table class="table">
     <tr>
@@ -66,55 +69,62 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.product_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.warranty)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.price)
-            </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.product_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.status)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.warranty)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.price)
+    </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.specification)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Special)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.brand.brand_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.category.category_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.image)
-            </td>
-            @{
-                if (int.Parse(userType) == 1 || int.Parse(userType) == 2)
-                {
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.product_id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.product_id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.product_id })
-                        @using (Html.BeginForm("AddToCart", "Cart", new { id = item.product_id }))
-                        {
-                            <div>
-
-
-                                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                                <input type="submit" class="btn btn-success" value="Add to Cart">
-                            </div>
-                        }
-                    </td>
-                }
+    <td>
+        @Html.DisplayFor(modelItem => item.specification)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Special)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.brand.brand_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.category.category_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.image)
+    </td>
+    @{
+        if (Session["user_type"] != null)
+        {
+            string userType = Session["user_type"].ToString();
+            if (int.Parse(userType) == 1 || int.Parse(userType) == 2)
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.product_id }) |
+                    
+                    @Html.ActionLink("Delete", "Delete", new { id = item.product_id })
+                </td>
             }
-        </tr>
+
+            <td>
+                @using (Html.BeginForm("AddToCart", "Cart", new { id = item.product_id }))
+                    {
+                        <div>
+
+                            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                            <input type="submit" class="btn btn-success" value="Add to Cart">
+                        </div>
+                    }
+            </td>
+        }
+
+    }
+</tr>
     }
 
 </table>

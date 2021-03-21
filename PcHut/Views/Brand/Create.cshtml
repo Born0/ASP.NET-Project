@@ -3,14 +3,19 @@
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Html.EnableClientValidation(true);
 }
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>brand</h4>
         <hr />
@@ -20,6 +25,7 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.brand_name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.brand_name, "", new { @class = "text-danger" })
+
             </div>
         </div>
 
@@ -27,9 +33,9 @@
             @Html.LabelFor(model => model.vendor_id, "vendor_name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.DropDownList("vendor_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.vendor_id, "", new { @class = "text-danger" })*@
+                    @Html.ValidationMessageFor(model => model.vendor_id, "", new { @class = "text-danger" })*@
                 <select name="vendor_id">
-                    @foreach(var item in ViewData["vendors"] as IList<PcHut.Models.vendor>)
+                    @foreach (var item in ViewData["vendors"] as IList<PcHut.Models.vendor>)
                     {
                         <option value="@item.vendor_id"> @item.vendor_name</option>
                     }
@@ -44,6 +50,7 @@
         </div>
     </div>
 }
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")

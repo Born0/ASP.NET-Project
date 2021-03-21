@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
@@ -27,13 +28,28 @@
                     <li>@Html.ActionLink("Brand", "Index", "Brand")</li>
                     <li>@Html.ActionLink("Vendor", "Index", "Vendor")</li>
                     @{
-                        @*string userType = Session["user_type"].ToString();*@
-                        string userType = "1";
-                        if (int.Parse(userType) == 3)
+                        if (Session["user_type"] == null)
                         {
-                            <li> @Html.ActionLink("View Stats", "Stats", "Admin")</li>
-                            <li> @Html.ActionLink("Management", "Management", "Admin")</li>
+                            <li>@Html.ActionLink("Login/Signup", "Index", "Login")</li>
                         }
+                    }
+
+                    @{
+                        if (Session["user_type"] != null)
+                        {
+                            string userType = Session["user_type"].ToString();
+
+                            if (int.Parse(userType) == 1)
+                            {
+                                <li> @Html.ActionLink("View Stats", "Stats", "Admin")</li>
+                                <li> @Html.ActionLink("Management", "Management", "Admin")</li>
+                            }
+                            <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
+
+                        }
+
+
+
                     }
                 </ul>
             </div>

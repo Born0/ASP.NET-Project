@@ -46,8 +46,22 @@ namespace PcHut.Controllers
 
             return RedirectToAction("Index");
         }
-
         [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            ProductRepository repository = new ProductRepository();
+            var toDelete = repository.Get(id);
+            return View(toDelete);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult ConfirmDelete(int id)
+        {
+            ProductRepository repository = new ProductRepository();
+            repository.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+            [HttpGet]
         public ActionResult GetTopSold()
         {
             ProductRepository products = new ProductRepository();
@@ -120,14 +134,7 @@ namespace PcHut.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public ActionResult Delete(int id)
-        {
-            ProductRepository product = new ProductRepository();
-            product product1 = product.Get(id);
-
-            return RedirectToAction("ChangeProductStatus", product1);
-        }
+        
 
         public ActionResult ChangeProductStatus(product product)
         {

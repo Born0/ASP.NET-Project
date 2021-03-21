@@ -33,20 +33,26 @@ namespace PcHut.Controllers
                 credential cred = credRepo.LoginCheck(temp);
                 if (cred == null || cred.user_type == null)
                 {
+                    
                     ViewBag.error = "Id or password Error!";
                     return View("Index");
                 }
                 else
                 {
                     Session["user_id"] = cred.user_id;
-                    Session["user_type"] = cred.user_type; 
-                    //////////changed to fixed value for working
-                    //Session["user_type"] = 1;
-
+                    Session["user_type"] = cred.user_type;                   
                     return RedirectToAction("Index", "Home");
                 }
             }
            
         }
+
+        public ActionResult Logout()
+        {
+            Session["user_id"] = null;
+            Session["user_type"] = null;
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
