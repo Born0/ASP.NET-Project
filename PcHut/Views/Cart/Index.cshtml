@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PcHut.Controllers
+@using PcHut.Models
+<h2>Products In Cart</h2>
+
+@if (Session["Cart"] != null)
+{
+    <table class="table" style="text-align:justify">
+        <tr>
+
+            <th>Product Name</th>;
+            <th>Price</th>
+            <th> Quantity</th>
+            <th> Total</th>
+
+            <th></th>
+
+
+        </tr>
+        @foreach (var item in (List<Item>)Session["Cart"])
+        {
+            <tr>
+
+
+                <td>@item.Products.product_name</td>
+                <td>@item.Products.price</td>
+                <td>@item.Quantity</td>
+                <td>@(item.Quantity * item.Products.price)</td>
+                <td>
+                    @using (Html.BeginForm("Remove", "Cart", new { id = item.Products.product_id }))
+                    {
+                        <div>
+                            <input type="submit" class="btn btn-success" value="Remove">
+                        </div>}
+                </td>
+
+
+
+
+            </tr>
+
+
+
+
+
+        }
+
+
+            @Html.ActionLink("Continue Shopping", "Index", "Product")
+    </table>
+}
+else {
+    <h2>NOTHING ADDED TO CART</h2>
+}
+
+
+
