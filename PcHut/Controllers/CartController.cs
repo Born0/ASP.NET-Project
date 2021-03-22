@@ -1,4 +1,4 @@
-﻿using PcHut.Models;
+using PcHut.Models;
 using PcHut.Repository;
 using System;
 using System.Collections.Generic;
@@ -11,88 +11,62 @@ namespace PcHut.Controllers
     public class CartController : Controller
     {
         // GET: Cart
-        private ProductRepository repository;
+        private pchutEntities2 context=new pchutEntities2();
 
 
-
-        public ViewResult Index(CartRepository cart, string returnUrl)
+        public ActionResult Index()
         {
-            cart = null;
-            if (HttpContext.Session != null)
-            {
-               /// cart = (CartRepository)HttpContext.Session["Cart"]; change
-
-            }
-            if (cart == null)
-            {
-                cart = new CartRepository();
-              //  HttpContext.Session["Cart"] = cart; change
-            }
-
             return View();
-
-
-
         }
 
-
-        [HttpPost]
-        public ActionResult AddToCart(CartRepository cart, int productId)
+        public ActionResult Remove(int id)
         {
-            cart = null;
-            if (HttpContext.Session != null)
-            {
-                cart = (CartRepository)HttpContext.Session["Cart"];
+            int index = AlreadyAdded(id);
+            List<Item> cart = (List<Item>)Session["Cart"];
+            cart.RemoveAt(index);
 
-            }
-            if (cart == null)
-            {
-                cart = new CartRepository();
-                HttpContext.Session["Cart"] = cart;
-            }
-            var product = repository.Get(productId);
-            if (product != null)
-            {
-                cart.AddItem(product, 1);
-
-            }
-            return View("List");
+            Session["Cart"] = cart;
+            return View("Cart");
 
         }
-        public RedirectToRouteResult RemoveFromCart(CartRepository cart, int productId, string returnUrl)
+        public ActionResult AddToCart(int id)
         {
-            cart = null;
-            if (HttpContext.Session != null)
+            if (Session["Cart"] == null)
             {
-                cart = (CartRepository)HttpContext.Session["Cart"];
+                List<Item> cart = new List<Item>();
+                cart.Add(new Item(context.products.Find(id), 1));
+                Session["Cart"] = cart;
+            }
+            else 
+            {
+                List<Item> cart = (List<Item>)Session["Cart"];
+                int index = AlreadyAdded(id);
+                if (index == -1)
+                    cart.Add(new Item(context.products.Find(id), 1));
+                else
+                    cart[index].Quantity++;
+                Session["Cart"] = cart;
 
             }
-            if (cart == null)
-            {
-                cart = new CartRepository();
-                HttpContext.Session["Cart"] = cart;
-            }
-            var product = repository.Get(productId);
-            if (product != null)
-            {
-                cart.RemoveLine(product);
-            }
-            return RedirectToAction("Index", new { returnUrl });
+            return View("Cart");
         }
-        public PartialViewResult Summary(CartRepository cart)
+        private int AlreadyAdded(int id)
         {
-            cart = null;
-            if (HttpContext.Session != null)
-            {
-                cart = (CartRepository)HttpContext.Session["Cart"];
+            List<Item> cart = (List<Item>)Session["Cart"];
+            for (int i = 0; i < cart.Count; i++)
+           
+                if (cart[i].Products.product_id == id)
+                
+                       return i;
+
+            return -1;   
+              
 
             }
-            if (cart == null)
-            {
-                cart = new CartRepository();
-                HttpContext.Session["Cart"] = cart;
-            }
-            return PartialView(cart);
         }
+
+
+
+
+
     }
-}
