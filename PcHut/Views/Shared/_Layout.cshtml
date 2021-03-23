@@ -46,12 +46,17 @@
                             }
                             <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
 
+
                         }
-
-
-
                     }
                 </ul>
+                @{
+                    if (Session["user_type"] != null)
+                    {
+                        @Html.Partial("_ShoppingCart")
+                        
+                    }
+                }
             </div>
         </div>
     </div>
