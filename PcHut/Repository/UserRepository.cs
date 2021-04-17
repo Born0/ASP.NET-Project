@@ -32,5 +32,10 @@ namespace PcHut.Repository
             return newUser;
 
         }
+        public DbSqlQuery<user> UserDetails(int id)
+        {
+            var userDetails = context.users.SqlQuery(@"Select * from [user] where user_id=" + id);
+            return userDetails;
+        }
     }
 }

@@ -343,6 +343,8 @@ D:\Class\ASP .net\ASP.NET Project\PcHut\bin\System.Web.WebPages.Razor.dll
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\WebGrease.dll
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\EntityFramework.xml
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\EntityFramework.SqlServer.xml
+D:\Class\ASP .net\ASP.NET Project\PcHut\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Class\ASP .net\ASP.NET Project\PcHut\bin\Newtonsoft.Json.xml
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\System.Web.Helpers.xml
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\System.Web.Mvc.xml
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\System.Web.Optimization.xml
@@ -350,9 +352,7 @@ D:\Class\ASP .net\ASP.NET Project\PcHut\bin\System.Web.Razor.xml
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\System.Web.WebPages.xml
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\System.Web.WebPages.Deployment.xml
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\System.Web.WebPages.Razor.xml
-D:\Class\ASP .net\ASP.NET Project\PcHut\bin\Newtonsoft.Json.xml
 D:\Class\ASP .net\ASP.NET Project\PcHut\bin\Antlr3.Runtime.pdb
-D:\Class\ASP .net\ASP.NET Project\PcHut\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.csproj.CoreCompileInputs.cache
 D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.csproj.CopyComplete
 D:\Class\ASP .net\ASP.NET Project\PcHut\obj\Debug\PcHut.dll

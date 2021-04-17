@@ -1,7 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
@@ -17,13 +16,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @*<a href="@Url.Action("Index", "Home", null)">
-                    <img src="~/Resources/Image/Laptop Logo.png"  style="vertical-align: middle; height:40px" width:50px">*@
-                    @Html.ActionLink("PC Hut", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("PC Hut", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar">
                 <ul class="nav navbar-nav">
-
                     <li>@Html.ActionLink("Product", "Index", "Product")</li>
                     <li>@Html.ActionLink("Brand", "Index", "Brand")</li>
                     <li>@Html.ActionLink("Vendor", "Index", "Vendor")</li>
@@ -54,7 +50,7 @@
                     if (Session["user_type"] != null)
                     {
                         @Html.Partial("_ShoppingCart")
-                        
+
                     }
                 }
             </div>

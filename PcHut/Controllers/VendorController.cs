@@ -80,6 +80,24 @@ namespace PcHut.Controllers
             return View(vendorInfo);
         }
 
+        public ActionResult Top3VendorChart()
+        {
+            List<Top3VendorViewModel> vendors= vendorRepository.Top3Vendors();
+            List<BarChartModel> top3Vendors = new List<BarChartModel>();
+            foreach (var item in vendors)
+            {
+                Top3VendorViewModel top3 = new Top3VendorViewModel();
+                vendor vendor = new vendor();
+                vendor.vendor_name = vendorRepository.Get(item.vendor_id).vendor_name;
+                top3.NumberOfBrand = item.NumberOfBrand;
+                BarChartModel topChartModel = new BarChartModel(vendor.vendor_name, (double)top3.NumberOfBrand);
+                top3Vendors.Add(topChartModel);
+            }
+
+            ViewBag.DataPoints = Newtonsoft.Json.JsonConvert.SerializeObject(top3Vendors);
+            return View();
+        }
+
 
 
     }

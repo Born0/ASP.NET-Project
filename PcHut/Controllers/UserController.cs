@@ -106,5 +106,33 @@ namespace PcHut.Controllers
 
             return RedirectToAction("Index", "Product");
         }
+
+        [HttpGet]
+        public ActionResult TopThreeCustomerGraph()
+        {
+            pchutEntities2 context1 = new pchutEntities2();
+            var list1 = context1.Database.SqlQuery<TopCustomerViewModel>("select top 3 user_id, sum(total_ammount) as Column1 from invoice group by user_id order by sum(total_ammount) desc").ToList();
+
+            List<BarChartModel> topThreeCustomers = new List<BarChartModel>();
+
+            foreach (TopCustomerViewModel topThree in list1)
+            {
+                TopCustomerViewModel tcvm = new TopCustomerViewModel();
+                UserRepository user = new UserRepository();
+                var userDetails = user.Get(topThree.User_Id);
+
+                user userInfo = new user();
+                userInfo.user_name = userDetails.user_name;
+
+                //tcvm.User_Id = topThree.User_Id;
+                tcvm.Column1 = topThree.Column1;
+
+                BarChartModel topChartModel = new BarChartModel(userInfo.user_name, (double)tcvm.Column1);
+                topThreeCustomers.Add(topChartModel);
+            }
+
+            ViewBag.DataPoints = Newtonsoft.Json.JsonConvert.SerializeObject(topThreeCustomers);
+            return View();
+        }
     }
 }

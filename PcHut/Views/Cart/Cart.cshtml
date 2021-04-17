@@ -34,8 +34,9 @@
                     @using (Html.BeginForm("Remove", "Cart", new { id = item.Products.product_id }))
                     {
                         <div>
-                            <input type="submit" class="btn btn-success" value="Remove">
-                        </div>}
+                            <input type="submit" class="btn btn-danger" value="Remove">
+                        </div>
+                    }
                 </td>
 
 
@@ -48,8 +49,12 @@
 
 
         }
-     
+
     </table>
+    <div style="text-align:center;">
+
+        <a href="/Cart/Checkout" class="btn btn-warning">Checkout</a>
+    </div>
     @Html.ActionLink("Continue Shopping", "Index", "Product")
 </body>
 

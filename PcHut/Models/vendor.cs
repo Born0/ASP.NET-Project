@@ -11,7 +11,8 @@ namespace PcHut.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class vendor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,7 @@ namespace PcHut.Models
         }
     
         public int vendor_id { get; set; }
+        [Required(ErrorMessage = " can't be empty")]
         public string vendor_name { get; set; }
         public string vendor_email { get; set; }
     

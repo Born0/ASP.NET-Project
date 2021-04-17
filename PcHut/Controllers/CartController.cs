@@ -63,10 +63,15 @@ namespace PcHut.Controllers
               
 
             }
+
+        public ActionResult Checkout()
+        {
+            return View();
         }
 
 
-
+        }
+        
 
 
     }

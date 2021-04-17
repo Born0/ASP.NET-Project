@@ -3,9 +3,10 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 
 }
-<h2>Products</h2>
+<h2>Products @ViewBag.min</h2>
 @{
     if (Session["user_type"] != null)
     {
@@ -70,7 +71,17 @@
                 @Html.DisplayFor(modelItem => item.product_name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.status)
+                @{
+                    int sig = item.status;
+                }
+                @if (sig == 1)
+                {
+                    <p>Active</p>
+                }
+                else
+                {
+                    <p>Inactive</p>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.warranty)
@@ -92,7 +103,11 @@
                 @Html.DisplayFor(modelItem => item.category.category_name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.image)
+                @if (item.image != null)
+                {
+                    @*@Html.DisplayFor(modelItem => item.image)*@
+                    <img src="@Url.Content(item.image)" alt="" height="150" width="200" />
+                }
             </td>
             @{
                 if (Session["user_type"] != null)
@@ -103,7 +118,9 @@
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.product_id }) |
 
-                            @Html.ActionLink("Delete", "Delete", new { id = item.product_id })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.product_id }) |
+
+                            @Html.ActionLink("Change Status", "ChangeStatus", new { id = item.product_id })
                         </td>
                     }
 
