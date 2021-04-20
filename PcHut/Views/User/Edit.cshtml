@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Html.EnableClientValidation(true);
 }
 
 <h2>Edit</h2>
@@ -44,8 +45,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.registration_date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.registration_date, new { htmlAttributes = new { @class = "form-control" , @readonly = "readonly", disabled = "disabled" } })
-                @Html.ValidationMessageFor(model => model.registration_date, "", new { @class = "text-danger" })
+                 @Html.EditorFor(model => model.registration_date, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", disabled = "disabled" } })
+                 @Html.ValidationMessageFor(model => model.registration_date, "", new { @class = "text-danger" })
+               
             </div>
         </div>
 
@@ -66,5 +68,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+   @* <a href='@Url.Action("Index", "user")' class="btn btn-primary">Back to list</a>*@
 </div>

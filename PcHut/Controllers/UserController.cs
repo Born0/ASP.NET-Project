@@ -23,6 +23,48 @@ namespace PcHut.Controllers
             return View(allUsers);
         }
 
+        public ActionResult Account()
+        {
+            UserRepository users = new UserRepository();
+            if (Session["user_id"] != null)
+            {
+                int id = int.Parse(Session["user_id"].ToString());
+                return View(users.Get(id));
+            }
+            else
+                return Content("Please Login");
+            
+        }
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            UserRepository users = new UserRepository();
+            if (Session["user_id"] != null)
+            {
+                int id = int.Parse(Session["user_id"].ToString());
+                return View(users.Get(id));
+            }
+            else
+                return View();
+           
+        }
+        [HttpPost]
+        public ActionResult Edit(user user)
+        {
+            if(ModelState.IsValid)
+            {
+                UserRepository users1 = new UserRepository();
+                users1.Update(user);
+                return View("Account", user);
+            }
+            else
+            {
+                return View("Edit",user);
+            }
+
+           
+        }
+
         [HttpGet]
         public ActionResult ProductBoughtByBuyers()
         {
@@ -89,11 +131,80 @@ namespace PcHut.Controllers
             newUser.email = collection["userEmail"];
             newUser.phone = collection["userPhone"];
             newUser.password = collection["userPassword"];
+
+
+
+            ViewData["viewUserName"] = newUser.user_name;
+            ViewData["viewUserEmail"] = newUser.email;
+            ViewData["viewUserPhone"] = newUser.phone;
+            ViewData["viewUserPassword"] = newUser.password;
+
+
+
+            //Validation for the registration form
+            if (newUser.user_name == null || newUser.user_name == "")
+            {
+                ViewData["errUserName"] = "Please Give a User Name";
+                return View();
+            }
+
+
+
+            if (collection["userName"].Any(c => char.IsDigit(c)))
+            {
+                ViewData["errUserName"] = "Name Cannot Contain any Digit";
+                return View();
+            }
+
+
+
+            if (newUser.email == null || newUser.email == "")
+            {
+                ViewData["errUserEmail"] = "Please Give a User Email";
+                return View();
+            }
+
+
+
+            if (newUser.password == null || newUser.password == "")
+            {
+                ViewData["errUserPassword"] = "Please Give a User Password";
+                return View();
+            }
+
+            if (collection["userPassword"].Length < 5)
+            {
+                ViewData["errUserPassword"] = "Password Must be at least 5 characters long";
+                return View();
+            }
+
+
+
+            if (newUser.phone == null || newUser.phone == "")
+            {
+                ViewData["errUserPhone"] = "Please Give a Phone Number";
+                return View();
+            }
+
+
+
+            if (collection["userPhone"].Any(c => char.IsLetter(c)))
+            {
+                ViewData["errUserPhone"] = "Phone Cannot Contain any Character";
+                return View();
+            }
+
+
+
             newUser.registration_date = DateTime.Now;
+
+
 
             UserRepository uRepo = new UserRepository();
             uRepo.Insert(newUser);
-            int id= uRepo.GetByPhone(newUser.phone).user_id;
+            int id = uRepo.GetByPhone(newUser.phone).user_id;
+
+
 
 
             credential nCred = new credential();
@@ -101,12 +212,15 @@ namespace PcHut.Controllers
             nCred.password = newUser.password;
             nCred.user_type = "3";
 
+
+
             CredentialRepository credentialRepository = new CredentialRepository();
             credentialRepository.Insert(nCred);
 
+
+
             return RedirectToAction("Index", "Product");
         }
-
         [HttpGet]
         public ActionResult TopThreeCustomerGraph()
         {

@@ -22,8 +22,9 @@ namespace PcHut.Models
         }
     
         public int vendor_id { get; set; }
-        [Required(ErrorMessage = " can't be empty")]
+        [Required(ErrorMessage = "name can't be empty")]
         public string vendor_name { get; set; }
+        [Required(ErrorMessage = "Emain can't be empty")]
         public string vendor_email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

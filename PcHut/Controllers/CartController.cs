@@ -66,7 +66,10 @@ namespace PcHut.Controllers
 
         public ActionResult Checkout()
         {
-            return View();
+            int id = int.Parse(Session["user_id"].ToString());
+            UserRepository userRepository = new UserRepository();
+            
+            return View(userRepository.Get(id));
         }
 
 

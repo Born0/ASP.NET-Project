@@ -92,6 +92,7 @@
             @Html.LabelFor(model => model.ProductPic, htmlAttributes: new { @class = "control-label col-md-2" })
             <div>
                 <input type="file" name="ProductPic" />
+                @ViewBag.imgError
             </div>
         </div>
 

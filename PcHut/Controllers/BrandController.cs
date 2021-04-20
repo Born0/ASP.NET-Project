@@ -27,9 +27,16 @@ namespace PcHut.Controllers
         [HttpPost]
         public ActionResult Create(brand brand)
         {
-            
-            brandRepository.Insert(brand);
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+            {
+                brandRepository.Insert(brand);
+                return RedirectToAction("Index");
+            }
+           else
+            {
+                ViewData["vendors"] = vendorRepository.GetAll();
+                return View(brand);
+            }
         }
         [HttpGet]
         public ActionResult Delete(int id)
@@ -51,10 +58,16 @@ namespace PcHut.Controllers
         [HttpPost]
         public ActionResult Edit(brand brand)
         {
-
-          
-            brandRepository.Update(brand);
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+            {
+                brandRepository.Update(brand);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewData["vendors"] = vendorRepository.GetAll();
+                return View(brand);
+            }
         }
         [HttpGet]
         public ActionResult Details(int id)

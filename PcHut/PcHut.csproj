@@ -402,8 +402,11 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\TopThreeCustomerGraph.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
-    <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Vendor\Top3VendorChart.cshtml" />
+    <Content Include="Views\Product\Filter.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Account.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

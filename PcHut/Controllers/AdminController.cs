@@ -54,8 +54,15 @@ namespace PcHut.Controllers
         [HttpPost]
         public ActionResult Edit(user cUser)
         {
-            userRepository.Update(cUser);
-            return RedirectToAction("Management");
+            if (ModelState.IsValid)
+            {
+                userRepository.Update(cUser);
+                return RedirectToAction("Management");
+            }
+            else
+            {
+                return View("Edit", cUser);
+            }
         }
 
         [HttpGet]

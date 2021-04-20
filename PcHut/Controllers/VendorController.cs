@@ -25,8 +25,15 @@ namespace PcHut.Controllers
         [HttpPost]
         public ActionResult Create(vendor vendor)
         {
-            vendorRepository.Insert(vendor);
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+            {
+                vendorRepository.Insert(vendor);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(vendor);
+            }
         }
 
         [HttpGet]
@@ -48,8 +55,15 @@ namespace PcHut.Controllers
         [HttpPost]
         public ActionResult Edit(vendor vendor)
         {
-            vendorRepository.Update(vendor);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                vendorRepository.Update(vendor);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(vendor);
+            }
         }
         [HttpGet]
         public ActionResult Details(int id)

@@ -25,6 +25,7 @@ namespace PcHut.Models
        // [RegularExpression("^[a-zA-Z ]*$",ErrorMessage = "Can't use number")]
        [Required(ErrorMessage= " can't be empty")]
         public string brand_name { get; set; }
+        
         public int vendor_id { get; set; }
     
         public virtual vendor vendor { get; set; }

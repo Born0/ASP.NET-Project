@@ -11,7 +11,8 @@ namespace PcHut.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class user
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +20,20 @@ namespace PcHut.Models
         {
             this.credentials = new HashSet<credential>();
         }
-    
+
         public int user_id { get; set; }
+        [Required(ErrorMessage ="Name is required")]
         public string user_name { get; set; }
+        [Required(ErrorMessage = "Name is required")]
+        /*[EmailAddress(ErrorMessage = "Invalid Email Address.")]*/
         public string email { get; set; }
+        [Required(ErrorMessage = "Phone number required")]
+        /*[RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]*/
         public string phone { get; set; }
         public System.DateTime registration_date { get; set; }
+        [Required(ErrorMessage ="Password is required")]
+
+        [StringLength(50, MinimumLength = 5, ErrorMessage ="Minimum 5 character")]
         public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

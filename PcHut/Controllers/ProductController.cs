@@ -15,35 +15,62 @@ namespace PcHut.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            List<product> products = TempData["products"] as List<product>;
-            if (products != null)
-            {
-                return View(TempData["products"]);
-            }
-            else
-            {
+            
                 ProductRepository product1 = new ProductRepository();
                 var allProducts = product1.GetAll();
                 return View(allProducts);
-            }
+            
             
         }
 
-        /*public ActionResult Index(List<product> products)
+        public ActionResult Filter(FormCollection collection)
         {
-            return View(products);
-        }*/
+            List<product> products = new List<product>();
+            int min, max;
+            if (collection["minimum"] == ""  && collection["maximum"] == "")
+            {
+                min = 0;
+                max = int.MaxValue;
+                products = product1.PriceFilter(min, max);
+                return View(products);
+            }
+            else if (collection["minimum"] == "" || collection["minimum"] == null  || collection["maximum"] == "" || collection["maximum"] == null)
+            {
+                if (collection["minimum"] == "" || collection["minimum"] == null)
+                {
+                    min = 0;
+                    max = int.Parse(collection["maximum"]);
+                    products = product1.PriceFilter(min, max);
+                    return View(products);
+                }
+                else /*if(collection["maximum"] == "" || collection["maximum"] == null)*/
+                {
+                    min = int.Parse(collection["minimum"]);
+                    max = int.MaxValue;
+                    products = product1.PriceFilter(min, max);
+                    return View(products);
+                }
+               /* else
+                {
+                    min = 0;
+                    max = int.MaxValue;
+                    products = product1.PriceFilter(min, max);
+                    return View(products);
+                }*/
 
-       /* public void PriceFilter(FormCollection collection)
-        {
-            float min = float.Parse(collection["minimum"]);
-            ViewBag.min = min;
-            float max = float.Parse(collection["maximum"]);
-            List<product> products = product1.PriceFilter(min, max);  //--------send list to index
-            //Index(products);
-            TempData["products"] = products;
-            Index();
-        }*/
+            }
+            else
+            {
+                min =int.Parse( collection["minimum"]);
+                max = int.Parse(collection["maximum"]);
+                products = product1.PriceFilter(min, max);
+                return View(products);
+            }
+            
+            
+        }
+
+        
 
         [HttpGet]
         public ActionResult Create()
@@ -59,54 +86,58 @@ namespace PcHut.Controllers
         [HttpPost]
         public ActionResult Create(ImageViewModel product)
         {
-            try
+            if (ModelState.IsValid) //If the form validation is done properly, then it will be true and will create a product
             {
-                string filePath = Server.MapPath("~/Image/");
-                string fileName = Path.GetFileName(product.ProductPic.FileName);
+                try
+                {
+                    string filePath = Server.MapPath("~/Image/");
+                    if(product.ProductPic!=null)
+                    {
+                        string fileName = Path.GetFileName(product.ProductPic.FileName);
+                        string fullFilePath = Path.Combine(filePath, fileName);
+                        product.ProductPic.SaveAs(fullFilePath);
+                        product.image = "~/Image/" + product.ProductPic.FileName;
+                    }
+                    else
+                    {
+                        ViewBag.imgError = "Upload image";
+                    }
 
-                string fullFilePath = Path.Combine(filePath, fileName);
-                product.ProductPic.SaveAs(fullFilePath);
-                product.image = "~/Image/" + product.ProductPic.FileName;
+     
+                }
+                catch (Exception ex) { }
+                
+                product prod = new product();
+                prod.product_name = product.product_name;
+                prod.brand_id = product.brand_id;
+                prod.category_id = product.category_id;
+                prod.price = product.price;
+                prod.image = product.image;
+                prod.specification = product.specification;
+                prod.Special = product.Special;
+                /*prod.brand = product.brand;
+                prod.category = product.category;*/
+                prod.warranty = product.warranty;
+
+
+
+                ProductRepository addProduct = new ProductRepository();
+                prod.status = 1;
+                addProduct.Insert(prod);
+
+
+
+                return RedirectToAction("Index");
             }
-            catch (Exception ex) { }
-            /*try
-            {*/
-            /*string FileName = Path.GetFileNameWithoutExtension(product.ProductPic.FileName);
+            //if the form validation is not done properly then it will show the validation message and will not create product
+            CategoryRepository categoryList = new CategoryRepository();
+            ViewData["categories"] = categoryList.GetAll();
 
-            //To Get File Extension  
-            string FileExtension = Path.GetExtension(product.ProductPic.FileName);
 
-            //Add Current Date To Attached File Name  
-            FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
 
-            //Get Upload path from Web.Config file AppSettings.  
-            string UploadPath = ConfigurationManager.AppSettings["ProductImage"].ToString();
-
-            //Its Create complete path to store in server.  
-            product.image = UploadPath + FileName;
-
-            //To copy and save file into server.  
-            product.ProductPic.SaveAs(product.image);*/
-            /*}
-            catch (Exception e) { }*/
-
-            product prod = new product();
-            prod.product_name = product.product_name;
-            prod.brand_id = product.brand_id;
-            prod.category_id = product.category_id;
-            prod.price = product.price;
-            prod.image = product.image;
-            prod.specification = product.specification;
-            prod.Special = product.Special;
-            /*prod.brand = product.brand;
-            prod.category = product.category;*/
-            prod.warranty = product.warranty;
-
-            ProductRepository addProduct = new ProductRepository();
-            prod.status = 1;
-            addProduct.Insert(prod);
-
-            return RedirectToAction("Index");
+            BrandRepository brandList = new BrandRepository();
+            ViewData["brands"] = brandList.GetAll();
+            return View();
         }
         [HttpGet]
         public ActionResult Delete(int id)
@@ -131,13 +162,7 @@ namespace PcHut.Controllers
             return View(allUsers);
         }
 
-        /*[HttpGet]
-        public ActionResult ProductBoughtByBuyers()
-        {
-            ProductRepository buyers = new ProductRepository();
-            var allBuyers = buyers.BoughtByBuyers();
-            return View(allBuyers);
-        }*/
+       
         [HttpPost]
         public ActionResult SearchProduct(FormCollection collection )
         {
@@ -168,6 +193,8 @@ namespace PcHut.Controllers
                 pr.product_name = p.product_name;
                 pr.price = p.price;
                 pr.warranty = p.warranty;
+                pr.brand = p.brand;
+                pr.category = p.category;
             }
             return View(pr);
         }
@@ -205,38 +232,102 @@ namespace PcHut.Controllers
         [HttpPost]
         public ActionResult Edit(ImageViewModel product)
         {
-            //Exception is handled. Because at the time of edit if the user
-            //does not select any new image then the prevoius image path will be sent
-            //therefoere only the old image will be staying
-            //If user modify the image by giving a new one the no exception will be thrown.
+            if (ModelState.IsValid) //If the form validation is done properly, then it will be true and will create a product
+            {
+                //Exception is handled. Because at the time of edit if the user
+                //does not select any new image then the prevoius image path will be sent
+                //therefoere only the old image will be staying
+                //If user modify the image by giving a new one the no exception will be thrown.
+                try
+                {
+                    string filePath = Server.MapPath("~/Image/");
+                    if (product.ProductPic != null)
+                    {
+                        string fileName = Path.GetFileName(product.ProductPic.FileName);
+                        string fullFilePath = Path.Combine(filePath, fileName);
+                        product.ProductPic.SaveAs(fullFilePath);
+                        product.image = "~/Image/" + product.ProductPic.FileName;
+                    }
+                    else
+                    {
+                        ViewBag.imgError = "Upload image";
+                    }
+                }
+                catch (Exception ex) { }
+
+                product singleProduct = new product();
+                singleProduct.product_id = product.product_id;
+                singleProduct.product_name = product.product_name;
+                singleProduct.brand_id = product.brand_id;
+                singleProduct.category_id = product.category_id;
+                singleProduct.price = product.price;
+                singleProduct.image = product.image;
+                singleProduct.specification = product.specification;
+                singleProduct.Special = product.Special;
+                singleProduct.brand = product.brand;
+                singleProduct.category = product.category;
+                singleProduct.warranty = product.warranty;
+
+
+
+                ProductRepository product1 = new ProductRepository();
+                singleProduct.status = product.status;
+                product1.Update(singleProduct);
+                return RedirectToAction("Index");
+            }
+            //if the form validation is not done properly then it will show the validation message and will not create product
+            /*CategoryRepository categoryList = new CategoryRepository();
+            ViewData["categories"] = categoryList.GetAll();
+
+ 
+
+            BrandRepository brandList = new BrandRepository();
+            ViewData["brands"] = brandList.GetAll();*/
             try
             {
                 string filePath = Server.MapPath("~/Image/");
-                string fileName = Path.GetFileName(product.ProductPic.FileName);
-
-                string fullFilePath = Path.Combine(filePath, fileName);
-                product.ProductPic.SaveAs(fullFilePath);
-                product.image = "~/Image/" + product.ProductPic.FileName;
+                if (product.ProductPic != null)
+                {
+                    string fileName = Path.GetFileName(product.ProductPic.FileName);
+                    string fullFilePath = Path.Combine(filePath, fileName);
+                    product.ProductPic.SaveAs(fullFilePath);
+                    product.image = "~/Image/" + product.ProductPic.FileName;
+                }
+                else
+                {
+                    ViewBag.imgError = "Upload image";
+                }
             }
             catch (Exception ex) { }
 
-            product singleProduct = new product();
-            singleProduct.product_id = product.product_id;
-            singleProduct.product_name = product.product_name;
-            singleProduct.brand_id = product.brand_id;
-            singleProduct.category_id = product.category_id;
-            singleProduct.price = product.price;
-            singleProduct.image = product.image;
-            singleProduct.specification = product.specification;
-            singleProduct.Special = product.Special;
-            singleProduct.brand = product.brand;
-            singleProduct.category = product.category;
-            singleProduct.warranty = product.warranty;
 
-            ProductRepository product1 = new ProductRepository();
-            singleProduct.status = product.status;
-            product1.Update(singleProduct);
-            return RedirectToAction("Index");
+
+            ImageViewModel singleProduct1 = new ImageViewModel();
+            singleProduct1.product_id = product.product_id;
+            singleProduct1.product_name = product.product_name;
+            singleProduct1.brand_id = product.brand_id;
+            singleProduct1.category_id = product.category_id;
+            singleProduct1.price = product.price;
+            singleProduct1.image = product.image;
+            singleProduct1.specification = product.specification;
+            singleProduct1.Special = product.Special;
+            singleProduct1.brand = product.brand;
+            singleProduct1.category = product.category;
+            singleProduct1.warranty = product.warranty;
+
+
+
+            //ProductRepository product1 = new ProductRepository();
+            singleProduct1.status = product.status;
+            //product1.Update(singleProduct);
+            CategoryRepository categoryList = new CategoryRepository();
+            ViewData["categories"] = categoryList.GetAll();
+
+
+
+            BrandRepository brandList = new BrandRepository();
+            ViewData["brands"] = brandList.GetAll();
+            return View(singleProduct1);
         }
 
 

@@ -49,11 +49,11 @@
                 string userType = Session["user_type"].ToString();
                 if (int.Parse(userType) == 1 || int.Parse(userType) == 2)
                 {
-                <td>
+                @*<td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.brand_id }) |
 
                     @Html.ActionLink("Delete", "Delete", new { id = item.brand_id })
-                </td>
+                </td>*@
                     }
                 }
             }

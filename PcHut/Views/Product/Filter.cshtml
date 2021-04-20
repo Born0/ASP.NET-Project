@@ -148,39 +148,15 @@
                         </td>
                     }
 
-                    @*<td>
-                            @using (Html.BeginForm("AddToCart", "Cart", new { id = item.product_id }))
-                            {
-                                <div>
-
-                                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                                    <input type="submit" class="btn btn-success" value="Add to Cart">
-                                </div>
-                            }
-                        </td>*@
-                    //////////SADAT
-                    ///RIMON
                     <td>
-                        @if (sig == 1)
-                        {
-                            using (Html.BeginForm("AddToCart", "Cart", new { id = item.product_id }))
-                            {
-                                <div>
-
-
-
-                                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                                    <input type="submit" class="btn btn-success" value="Add to Cart">
-                                </div> }
-                        }
-                        else
+                        @using (Html.BeginForm("AddToCart", "Cart", new { id = item.product_id }))
                         {
                             <div>
 
-
-
-                                <input type="submit" class="btn btn-danger" value="Out Of Stock!" disabled>
-                            </div>}
+                                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                                <input type="submit" class="btn btn-success" value="Add to Cart">
+                            </div>
+                        }
                     </td>
                 }
 

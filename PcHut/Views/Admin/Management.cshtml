@@ -32,9 +32,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.registration_date)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.password)
-            </th>
+            </th>*@
             <th></th>
         </tr>
 
@@ -53,13 +53,13 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.registration_date)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.password)
-                </td>
+                </td>*@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.user_id }) |
                    
-                    @Html.ActionLink("Delete", "Delete", new { id = item.user_id })
+                    
                 </td>
             </tr>
         }

@@ -1,26 +1,37 @@
-﻿
-@{
-    ViewBag.Title = "Registration";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@{ ViewBag.Title = "Registration";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
 
 <h2>Registration</h2>
 
+
+
 <html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 <body>
 
-    <script>
-            function teacherRegister() {
-                @*alert('fwe');
-                document.getElementById('err_username').innerHTML = " ";
-                alert("hello");
-                document.getElementById('err_userEmail').innerHTML = " ";
-                document.getElementById('err_userPassword').innerHTML = " ";*@
 
-                var name = document.getElementById('userName').value;
+
+    <!--<script>
+            function teacherRegister() {-->
+    @*alert('fwe');
+        document.getElementById('err_username').innerHTML = " ";
+        alert("hello");
+        document.getElementById('err_userEmail').innerHTML = " ";
+        document.getElementById('err_userPassword').innerHTML = " ";*@
+
+
+
+    <!--var name = document.getElementById('userName').value;
                 var email = document.getElementById('userEmail').value;
                 var pass = document.getElementById('userPassword').value;
                 var phone = document.getElementById('userPhone').value;
+
+
 
                 var zero = name.search("0");
                 var one = name.search("1");
@@ -33,7 +44,11 @@
                 var eight = name.search("8");
                 var nine = name.search("9");
 
+
+
                 //alert('afi');
+
+
 
                 if (name != "") {
                     //alert("hello 1");
@@ -41,6 +56,8 @@
                     document.getElementById('err_userEmail').innerHTML = " ";
                     document.getElementById('err_userPassword').innerHTML = " ";
                     document.getElementById('err_userPhone').innerHTML = " ";
+
+
 
                     if (zero != -1 || one != -1 || three != -1 || four != -1 || five != -1 || six != -1 ||
                         seven != -1 || eight != -1 || nine != -1 || two != -1) {
@@ -56,9 +73,13 @@
                     return false;
                 }
 
+
+
                 if (email != "") {
                     //alert("hello");
                     //document.getElementById('err_userEmail').innerHTML = " ";
+
+
 
                     document.getElementById('err_userName').innerHTML = " ";
                     document.getElementById('err_userEmail').innerHTML = " ";
@@ -72,14 +93,20 @@
                     return false;
                 }
 
+
+
                 if (pass != "") {
                     //alert("hello")
                     //document.getElementById('err_userPassword').innerHTML = " ";
+
+
 
                     document.getElementById('err_userName').innerHTML = " ";
                     document.getElementById('err_userEmail').innerHTML = " ";
                     document.getElementById('err_userPassword').innerHTML = " ";
                     document.getElementById('err_userPhone').innerHTML = " ";
+
+
 
 
                     if (pass.length < 5) {
@@ -95,14 +122,20 @@
                     return false;
                 }
 
+
+
                 if (phone != "") {
                     //alert("hello")
                     //document.getElementById('err_userPhone').innerHTML = " ";
+
+
 
                     document.getElementById('err_userName').innerHTML = " ";
                     document.getElementById('err_userEmail').innerHTML = " ";
                     document.getElementById('err_userPassword').innerHTML = " ";
                     document.getElementById('err_userPhone').innerHTML = " ";
+
+
 
                     //return false;
                 }
@@ -112,58 +145,69 @@
                     return false;
                 }
 
+
+
                 alert("Registration Done!!")
                 return true;
             }
-    </script>
+    </script>-->
 
 
-    <form action="/user/Registration" method="post" id="register" onsubmit="return teacherRegister()">
-        <table align="center">
+
+
+    <form action="/user/Registration" method="post">
+        @*id="register" onsubmit="return teacherRegister()"*@
+        <table align="center" class="alert-info">
             <tr>
-                <td>User Name</td>
+                <td class="justify-content-start">User Name</td>
                 <td>
-                    <input type="text" name="userName" id="userName" />
+                    <input type="text" name="userName" id="userName" value="@ViewData["viewUserName"]" />
                 </td>
                 <td>
-                    <span id="err_userName"> </span>
+                    @*<span id="err_userName"> </span>*@
+                    <strong class="alert-danger">@ViewData["errUserName"]</strong>
                 </td>
             </tr>
             <tr>
-                <td>Email</td>
+                <td class="alert-success">Email</td>
                 <td>
-                    <input type="text" name="userEmail" id="userEmail" />
+                    <input type="text" name="userEmail" id="userEmail" value="@ViewData["viewUserEmail"]" />
                 </td>
                 <td>
-                    <span id="err_userEmail"> </span>
+                    @*<span id="err_userEmail"> </span>*@
+                    <strong class="alert-danger">@ViewData["errUserEmail"]</strong>
                 </td>
             </tr>
             <tr>
                 <td>Password</td>
                 <td>
-                    <input type="password" name="userPassword" id="userPassword" />
+                    <input type="password" name="userPassword" id="userPassword" value="@ViewData["viewUserPassword"]" />
                 </td>
                 <td>
-                    <span id="err_userPassword"> </span>
+                    @*<span id="err_userPassword"> </span>*@
+                    <strong class="alert-danger">@ViewData["errUserPassword"]</strong>
                 </td>
             </tr>
             <tr>
                 <td>Phone</td>
                 <td>
-                    <input type="text" name="userPhone" id="userPhone" />
+                    <input type="text" name="userPhone" id="userPhone" value="@ViewData["viewUserPhone"]" />
                 </td>
                 <td>
-                    <span id="err_userPhone"> </span>
+                    @*<span id="err_userPhone"> </span>*@
+                    <strong class="alert-danger">@ViewData["errUserPhone"]</strong>
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td>
-                    <input type="submit" name="register" value="Sign Up" />
+                    <input type="submit" name="register" value="Sign Up" class="navbar-btn" />
                 </td>
             </tr>
         </table>
+
+
 
     </form>
 </body>
