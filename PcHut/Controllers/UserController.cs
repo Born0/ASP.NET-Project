@@ -217,9 +217,10 @@ namespace PcHut.Controllers
             CredentialRepository credentialRepository = new CredentialRepository();
             credentialRepository.Insert(nCred);
 
+            return View("UserId", nCred);
+            //return Content("your Id is: " + id);
 
-
-            return RedirectToAction("Index", "Product");
+            //return RedirectToAction("Index", "Product");
         }
         [HttpGet]
         public ActionResult TopThreeCustomerGraph()

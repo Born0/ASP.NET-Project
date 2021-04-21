@@ -1,0 +1,30 @@
+﻿@model PcHut.Models.credential
+
+@{
+    ViewBag.Title = "UserId";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UserId</h2>
+
+<div>
+    <h4>credential</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.user_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_id)
+        </dd>
+
+        
+
+        
+
+    </dl>
+</div>
+<p>
+    <a href='@Url.Action("Index", "Login")' class="btn btn-primary">Login</a>
+</p>
